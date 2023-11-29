@@ -4,15 +4,27 @@
     tools:ignore="HardcodedText">
 
     <item
-        android:id="@+id/nav_account"
-        android:title="My Account" />
+        android:id="@+id/nav_Parking_Availability"
+        android:title="Parking Availability" />
 
     <item
-        android:id="@+id/nav_settings"
-        android:title="Settings" />
+        android:id="@+id/nav_ParkingPass_Purchase"
+        android:title="Purchase Parking Pass" />
 
     <item
-        android:id="@+id/nav_logout"
-        android:title="Logout" />
+        android:id="@+id/nav_View_ParkingPass"
+        android:title="View parking pass" />
+
+    <item
+        android:id="@+id/nav_ParkingPass_History"
+        android:title="Purchase History" />
+
+    <item
+        android:id="@+id/nav_Create_Parking_Citation"
+        android:title="Create a Citation" />
+
+    <item
+        android:id="@+id/nav_Notification"
+        android:title="Notification" />
 
 </menu>
