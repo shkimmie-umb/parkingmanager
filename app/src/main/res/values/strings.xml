@@ -2,4 +2,14 @@
     <string name="app_name">ParkingManager</string>
     <string name="nav_open">Open</string>
     <string name="nav_close">Close</string>
+    <string-array name="car_list">
+        <item>My Car</item>
+        <item>Parents Car</item>
+        <item>Sister Car</item>
+        <item>My Second Car</item>
+    </string-array>
+    <string-array name="pass_type">
+        <item>Semester pass</item>
+        <item>Day pass</item>
+    </string-array>
 </resources>
