@@ -1,11 +1,17 @@
 package com.example.parkingmanager;
 
 import android.app.Application;
+import android.provider.Settings;
+
+import java.util.ArrayList;
 
 public class GlobalData extends Application {
+    private ArrayList<purchaseTableModel> passList;
     private static double calculated_rate;
     private static String paid_date;
     private static String selected_pass;
+    private static String parkingpass_status;
+
 
     @Override
     public void onCreate() {
@@ -13,6 +19,8 @@ public class GlobalData extends Application {
         calculated_rate = 0;
         paid_date = null;
         selected_pass = null;
+        passList = new ArrayList<purchaseTableModel>();
+        parkingpass_status = "Invalid";
         super.onCreate();
     }
 
@@ -31,6 +39,12 @@ public class GlobalData extends Application {
     public void setSelected_pass(String selected_pass){
         GlobalData.selected_pass = selected_pass;
     }
+    public void setParkingpass_status(String new_status){
+        GlobalData.parkingpass_status = new_status;
+    }
+    public void addPass(purchaseTableModel pass){
+        passList.add(pass);
+    }
 
     public double getCalculated_rate(){
         return calculated_rate;
@@ -40,6 +54,13 @@ public class GlobalData extends Application {
     }
     public String getSelected_pass(){
         return selected_pass;
+    }
+    public ArrayList<purchaseTableModel> getPurchaseTable(){
+        return passList;
+    }
+
+    public String getParkingpass_status(){
+        return parkingpass_status;
     }
 
 }

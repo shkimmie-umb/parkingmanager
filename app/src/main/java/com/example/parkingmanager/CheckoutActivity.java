@@ -51,6 +51,7 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
             global.setCalculated_rate(calculated_rate);
             global.setPaid_date(paid_date);
             global.setSelected_pass(selected_pass);
+            global.setParkingpass_status("Valid");
             Log.d("(Checkout act) calculated_rate:", String.valueOf(calculated_rate));
             Log.d("(Checkout act) paid_date:", paid_date);
             Log.d("(Checkout act) selected_pass:", selected_pass);

@@ -9,7 +9,7 @@
         <item>My Second Car</item>
     </string-array>
     <string-array name="pass_type">
-        <item>Semester pass</item>
+        <item>2023 Semester pass</item>
         <item>Day pass</item>
     </string-array>
 </resources>

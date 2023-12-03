@@ -18,6 +18,7 @@ import java.util.Date;
 
 public class ParkingPassPurchaseActivity extends AppCompatActivity implements View.OnClickListener {
 
+    Button btn_home;
     Button buttonPickTime;
     Button buttonGotoPaymentDetail;
     Intent purchaseConfirmIntent;
@@ -36,11 +37,14 @@ public class ParkingPassPurchaseActivity extends AppCompatActivity implements Vi
 
         // Timepicker button
         buttonPickTime = (Button) findViewById(R.id.btn_selectTimeSlot);
+        // Home button
+        btn_home = (Button) findViewById(R.id.btn_home);
         // purchase button
         buttonGotoPaymentDetail = (Button) findViewById(R.id.btn_purchase_pass);
 //        previewSelectedTimeTextView = findViewById<TextView>(R.id.preview_picked_time_textView)
 
         buttonPickTime.setOnClickListener(this);
+        btn_home.setOnClickListener(this);
         buttonGotoPaymentDetail.setOnClickListener(this);
 
         // In default, set picktime button disabled
@@ -124,6 +128,13 @@ public class ParkingPassPurchaseActivity extends AppCompatActivity implements Vi
 
             startActivity(purchaseConfirmIntent);
             finish();
+        }
+        else if(v == btn_home){
+            if (v == btn_home){
+                Intent intent = new Intent(getApplicationContext(), HamburgerMenuActivity.class);
+                startActivity(intent);
+                finish();
+            }
         }
     }
 

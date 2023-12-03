@@ -51,11 +51,28 @@
             android:textColor = "#ffffff" />
     </LinearLayout>
 
-    <ListView
-        android:id = "@+id/listview_purchase_history"
-        android:layout_width = "match_parent"
+    <LinearLayout
+        android:id = "@+id/linearLayout2"
+        android:layout_width = "fill_parent"
         android:layout_height = "wrap_content"
-        android:divider = "@null"/>
+        android:orientation="vertical"
+        android:background = "@android:color/transparent" >
+
+
+        <ListView
+            android:id = "@+id/listview_purchase_history"
+            android:layout_width = "match_parent"
+            android:layout_height = "wrap_content"
+            android:divider = "@null"/>
+        <Button
+            android:id="@+id/btn_home"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Back"
+            android:textAllCaps="false" />
+    </LinearLayout>
 
 
 </LinearLayout>

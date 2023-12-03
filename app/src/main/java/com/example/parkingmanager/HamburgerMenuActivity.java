@@ -28,7 +28,9 @@ public class HamburgerMenuActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.my_drawer_layout);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close);
 
-        hideItem(R.id.nav_Create_Parking_Citation); // Hide parking citation menu for general parkers
+
+//        hideItem(R.id.nav_Create_Parking_Citation); // Hide parking citation menu for general parkers
+
 
 
         // pass the Open and Close toggle for the drawer layout listener
@@ -56,6 +58,18 @@ public class HamburgerMenuActivity extends AppCompatActivity {
                 }
                 else if(id == R.id.nav_ParkingPass_History){
                     Intent intent = new Intent(getApplicationContext(), PurchaseHistoryActivity.class);
+                    startActivity(intent);
+                    finish();
+                    return true;
+                }
+                else if(id == R.id.nav_View_ParkingPass){
+                    Intent intent = new Intent(getApplicationContext(), ViewParkingPassActivity.class);
+                    startActivity(intent);
+                    finish();
+                    return true;
+                }
+                else if(id == R.id.nav_Create_Parking_Citation){
+                    Intent intent = new Intent(getApplicationContext(), CreateParkingCitationActivity.class);
                     startActivity(intent);
                     finish();
                     return true;
