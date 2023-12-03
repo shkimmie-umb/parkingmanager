@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/umbparking_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ParkingManager"
+        android:name=".GlobalData"
         tools:targetApi="31">
         <activity
             android:name=".HamburgerMenuActivity"
@@ -47,6 +48,14 @@
             android:theme="@style/Theme.MaterialComponents">
 
         </activity>
+        <activity
+            android:name=".PurchaseHistoryActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.MaterialComponents">
+
+        </activity>
+
     </application>
 
 </manifest>

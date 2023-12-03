@@ -2,6 +2,7 @@ package com.example.parkingmanager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -24,6 +25,9 @@ public class PurchaseConfirmationActivity extends AppCompatActivity implements V
     double rate;
 
     Intent thisIntent;
+    Intent checkoutIntent;
+    long selected_pass_id;
+    String selected_pass;
 
     private double calculateRate(int duration){
         double rate=0;
@@ -72,6 +76,8 @@ public class PurchaseConfirmationActivity extends AppCompatActivity implements V
         thisIntent = getIntent();
         int pickedHour = thisIntent.getIntExtra("picked_hour", 0);
         int pickedMinute = thisIntent.getIntExtra("picked_minute", 0);
+        selected_pass_id = thisIntent.getIntExtra("selected_pass_id", 0);
+        selected_pass = thisIntent.getStringExtra("selected_pass");
         SimpleDateFormat endTimeSDF = new SimpleDateFormat("HH:mm:ss z");
         String endDateAndTime = endTimeSDF.format(new Date(today.getYear(), today.getMonth(), today.getDate(),
                 pickedHour, pickedMinute));
@@ -96,13 +102,20 @@ public class PurchaseConfirmationActivity extends AppCompatActivity implements V
         tv_rate = (TextView)findViewById(R.id.textView_rate);
         tv_rate.setText("$" + String.format("%.2f", rate));
 
+        // Send data to CheckoutActivity
+        checkoutIntent = new Intent(getApplicationContext(), CheckoutActivity.class);
+        checkoutIntent.putExtra("calculated_rate", rate);
+        checkoutIntent.putExtra("selected_pass_id", selected_pass_id);
+        checkoutIntent.putExtra("selected_pass", selected_pass);
+        Log.d("(Purchase Confirm act) selected_pass: ", selected_pass);
+
 
     }
     @Override
     public void onClick(View v) {
         if (v == btn_checkout){
-            Intent intent = new Intent(getApplicationContext(), CheckoutActivity.class);
-            startActivity(intent);
+//            Intent intent = new Intent(getApplicationContext(), CheckoutActivity.class);
+            startActivity(checkoutIntent);
             finish();
         }
     }

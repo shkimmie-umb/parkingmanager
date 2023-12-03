@@ -54,6 +54,12 @@ public class HamburgerMenuActivity extends AppCompatActivity {
                     finish();
                     return true;
                 }
+                else if(id == R.id.nav_ParkingPass_History){
+                    Intent intent = new Intent(getApplicationContext(), PurchaseHistoryActivity.class);
+                    startActivity(intent);
+                    finish();
+                    return true;
+                }
                 return false;
                   }
         }
