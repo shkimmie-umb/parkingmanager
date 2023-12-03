@@ -27,7 +27,7 @@
         android:id="@+id/campus_center_500_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Campus Center 500" />
+        android:text="Campus Center" />
 
     <Button
         android:id="@+id/bayside_button"
