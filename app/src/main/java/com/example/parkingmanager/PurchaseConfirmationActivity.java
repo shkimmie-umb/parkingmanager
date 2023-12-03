@@ -10,14 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Duration;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 public class PurchaseConfirmationActivity extends AppCompatActivity implements View.OnClickListener {
 
 
-    Button checkout;
+    Button btn_checkout;
     TextView startTime;
     TextView endTime;
     TextView tv_duration;
@@ -62,6 +60,9 @@ public class PurchaseConfirmationActivity extends AppCompatActivity implements V
         setContentView(R.layout.purchase_detailconfirmation);
         Date today = new Date();
 
+        btn_checkout = (Button)findViewById((R.id.btn_gotoCheckout));
+        btn_checkout.setOnClickListener(this);
+
 
         SimpleDateFormat startTimeSDF = new SimpleDateFormat("HH:mm:ss z");
         String currentDateAndTime = startTimeSDF.format(today);
@@ -99,10 +100,10 @@ public class PurchaseConfirmationActivity extends AppCompatActivity implements V
     }
     @Override
     public void onClick(View v) {
-        if (v == checkout){
-//            Intent intent = new Intent(getApplicationContext(), ParkingPassPurchaseActivity.class);
-//            startActivity(intent);
-//            finish();
+        if (v == btn_checkout){
+            Intent intent = new Intent(getApplicationContext(), CheckoutActivity.class);
+            startActivity(intent);
+            finish();
         }
     }
 }

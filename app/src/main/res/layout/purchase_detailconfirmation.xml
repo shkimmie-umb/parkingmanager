@@ -125,7 +125,7 @@
             />
     </LinearLayout>
     <Button
-        android:id="@+id/btn_gotoPayment"
+        android:id="@+id/btn_gotoCheckout"
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

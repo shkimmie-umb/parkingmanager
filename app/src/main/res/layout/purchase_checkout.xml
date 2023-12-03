@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:paddingTop="150px">
+        <TextView
+            android:id="@+id/textView_startTime_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="32dp"
+            android:text="CARD DETAILS: "
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/textView_endTime_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="32dp"
+            android:text="How would you like to pay:"
+            android:textColor="@color/gray"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        >
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+
+        tools:context=".CheckoutActivity">
+
+        <TableRow
+
+            android:padding="2dp">
+
+
+            <TextView
+                android:layout_width="150px"
+                android:layout_height="100px"
+
+                android:visibility="invisible" />
+            <ImageView
+                android:id="@+id/visacard"
+                android:layout_width="60dp"
+                android:layout_height="150px"
+                android:src="@drawable/visa" />
+
+            <TextView
+                android:layout_width="150px"
+                android:layout_height="100px"
+
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/paypal"
+                android:layout_width="150px"
+                android:layout_height="150px"
+                android:src="@drawable/paypal" />
+            <TextView
+                android:layout_width="150px"
+                android:layout_height="100px"
+
+                android:visibility="invisible" />
+            <ImageView
+                android:id="@+id/mastercard"
+                android:layout_width="50px"
+                android:layout_height="150px"
+                android:src="@drawable/mastercard" />
+
+        </TableRow>
+
+        <TableRow
+
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="150px"
+                android:layout_height="150px"
+
+                android:visibility="invisible" />
+            <ImageView
+                android:id="@+id/amexcard"
+                android:layout_width="50dp"
+                android:layout_height="150px"
+
+                android:src="@drawable/amex" />
+            <TextView
+                android:layout_width="150px"
+                android:layout_height="match_parent"
+
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/cirruscard"
+                android:layout_width="150px"
+                android:layout_height="150px"
+                android:src="@drawable/cirrus" />
+            <TextView
+                android:layout_width="150px"
+                android:layout_height="150px"
+
+                android:visibility="invisible" />
+            <ImageView
+                android:id="@+id/discovercard"
+                android:layout_width="150px"
+                android:layout_height="150px"
+                android:src="@drawable/discover" />
+
+        </TableRow>
+
+
+    </TableLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="150px">
+        <EditText
+            android:id="@+id/simpleEditText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:hint="Enter Your Card Number"
+            android:text="4873 9826 8749 2090"/><!--set text in edit text-->
+        <Button
+            android:id="@+id/btn_proceedToPay"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Pay"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
+</LinearLayout>
