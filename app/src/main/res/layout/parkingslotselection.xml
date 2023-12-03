@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/parking_facilities_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Parking Facilities"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/west_garage_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="West Garage" />
+
+    <Button
+        android:id="@+id/lot_d_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lot D" />
+
+    <Button
+        android:id="@+id/campus_center_500_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Campus Center 500" />
+
+    <Button
+        android:id="@+id/bayside_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bayside" />
+
+</LinearLayout>
