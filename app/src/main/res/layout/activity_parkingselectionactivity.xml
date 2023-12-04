@@ -179,6 +179,7 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/imageViewSpot1"
                     android:layout_width="10mm"
                     android:layout_height="10mm"
                     android:layout_gravity="right"
@@ -186,12 +187,14 @@
                     app:tint="@color/white" />
 
                 <ImageView
+                    android:id="@+id/imageViewSpot2"
                     android:layout_width="10mm"
                     android:layout_height="10mm"
                     android:src="@drawable/available"
                     app:tint="@color/white" />
 
                 <ImageView
+                    android:id="@+id/imageViewSpot3"
                     android:layout_width="10mm"
                     android:layout_height="10mm"
                     android:background="@color/black"
@@ -199,6 +202,7 @@
                     app:tint="@color/black" />
 
                 <ImageView
+                    android:id="@+id/imageViewSpot4"
                     android:layout_width="10mm"
                     android:layout_height="10mm"
                     android:layout_gravity="right"
@@ -206,6 +210,7 @@
                     app:tint="@color/white" />
 
                 <ImageView
+                    android:id="@+id/imageViewSpot5"
                     android:layout_width="10mm"
                     android:layout_height="10mm"
                     android:layout_gravity="right"

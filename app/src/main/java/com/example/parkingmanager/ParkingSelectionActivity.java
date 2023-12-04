@@ -1,9 +1,12 @@
 package com.example.parkingmanager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -21,8 +24,11 @@ public class ParkingSelectionActivity extends AppCompatActivity {
         // Find views by their IDs
         TextView titleTextView = findViewById(R.id.textView_title2);
         Spinner spinner = findViewById(R.id.spinner1);
-
-
+        ImageView imageViewSpot1 = findViewById(R.id.imageViewSpot1);
+        ImageView imageViewSpot2 = findViewById(R.id.imageViewSpot2);
+        ImageView imageViewSpot3 = findViewById(R.id.imageViewSpot3);
+        ImageView imageViewSpot4 = findViewById(R.id.imageViewSpot4);
+        ImageView imageViewSpot5 = findViewById(R.id.imageViewSpot5);
 
         titleTextView.setText("Select a Parking Spot");
 
@@ -34,7 +40,6 @@ public class ParkingSelectionActivity extends AppCompatActivity {
         );
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -50,6 +55,46 @@ public class ParkingSelectionActivity extends AppCompatActivity {
             }
         });
 
+        // Set up OnClickListener for each ImageView
+        imageViewSpot1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle ImageView click
+                navigateToSpotConfirmationActivity("1"); // Pass the spot number
+            }
+        });
+
+        imageViewSpot2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle ImageView click
+                navigateToSpotConfirmationActivity("2"); // Pass the spot number
+            }
+        });
+
+        imageViewSpot3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle ImageView click
+                navigateToSpotConfirmationActivity("3"); // Pass the spot number
+            }
+        });
+
+        imageViewSpot4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle ImageView click
+                navigateToSpotConfirmationActivity("4"); // Pass the spot number
+            }
+        });
+
+        imageViewSpot5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle ImageView click
+                navigateToSpotConfirmationActivity("5");
+            }
+        });
 
         TableRow westGarageRow = findViewById(R.id.table_row_west_garage);
         westGarageRow.setOnClickListener(new View.OnClickListener() {
@@ -59,8 +104,11 @@ public class ParkingSelectionActivity extends AppCompatActivity {
                 Toast.makeText(ParkingSelectionActivity.this, "West Garage clicked", Toast.LENGTH_SHORT).show();
             }
         });
+    }
 
-
-
+    private void navigateToSpotConfirmationActivity(String spotNumber) {
+        Intent intent = new Intent(this, SpotConfirmationActivity.class);
+        intent.putExtra("SPOT_NUMBER", spotNumber);
+        startActivity(intent);
     }
 }
