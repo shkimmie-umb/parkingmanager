@@ -11,7 +11,9 @@ import android.widget.Button;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class CheckoutActivity extends AppCompatActivity implements View.OnClickListener {
@@ -21,6 +23,8 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
     double calculated_rate;
     String selected_pass;
     GlobalData global;
+    citationTableModel citation;
+    ArrayList<purchaseTableModel> passList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,8 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
         thisIntent = getIntent();
         calculated_rate = thisIntent.getDoubleExtra("calculated_rate", 0);
         selected_pass = thisIntent.getStringExtra("selected_pass");
+
+        passList = global.getPurchaseTable();
     }
     @Override
     public void onClick(View v) {
@@ -57,8 +63,38 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
             Log.d("(Checkout act) calculated_rate:", String.valueOf(calculated_rate));
             Log.d("(Checkout act) paid_date:", paid_date);
             Log.d("(Checkout act) selected_pass:", selected_pass);
-//            PurchaseHistoryIntent.putExtra("paid_date", paid_date);
 
+            citation = global.getCitationTable();
+            if(citation.getCitationStatus().equals("Cited") || citation.getCitationStatus().equals("Pending") || citation.getCitationStatus().equals("Appealed") || citation.getCitationStatus() == "Confirmed") {
+                citation.setCitationStatus("Paid");
+            }
+
+            purchaseTableModel item1, item2, item3, item4, item5;
+            if(passList.size() == 0){
+                item1 = new purchaseTableModel("Day pass", "Expired", "11/23/2022", "$15.00");
+                passList.add(item1);
+
+                item2 = new purchaseTableModel("Day pass", "Expired", "08/24/2022", "$8.00");
+                passList.add(item2);
+
+                item3 = new purchaseTableModel("2022 Spring pass", "Expired", "01/02/2022", "$500.00");
+                passList.add(item3);
+
+                item4 = new purchaseTableModel("2020 Fall pass", "Expired", "09/02/2020", "$550.00");
+                passList.add(item4);
+
+                item5 = new purchaseTableModel("2018 Spring pass", "Expired", "01/12/2018", "$550.00");
+                passList.add(item5);
+            }
+
+            if(calculated_rate != 0 && selected_pass != null){
+                DecimalFormat df = new DecimalFormat("#.00");
+                String calculatedRateFormatted = df.format(calculated_rate);
+
+
+                purchaseTableModel item = new purchaseTableModel(selected_pass, "Active", paid_date, "$" + calculatedRateFormatted);
+                passList.add(item);
+            }
 
             // Create dialog
             AlertDialog.Builder builder = new AlertDialog.Builder(CheckoutActivity.this);

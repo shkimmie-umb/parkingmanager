@@ -70,7 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:orientation="horizontal"
-        android:paddingTop="450px"
+        android:paddingTop="100px"
         android:gravity="center_horizontal">
 
         <Button

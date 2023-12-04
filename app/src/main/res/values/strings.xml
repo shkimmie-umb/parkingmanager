@@ -24,5 +24,6 @@
     <string-array name="pass_type">
         <item>2023 Semester pass</item>
         <item>Day pass</item>
+        <item>Violation</item>
     </string-array>
 </resources>

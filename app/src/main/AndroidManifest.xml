@@ -83,6 +83,13 @@
             android:theme="@style/Theme.MaterialComponents">
 
         </activity>
+        <activity
+            android:name=".NotificationManagerActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.MaterialComponents">
+
+        </activity>
 
     </application>
 

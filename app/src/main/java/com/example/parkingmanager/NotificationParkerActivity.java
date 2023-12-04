@@ -36,9 +36,9 @@ public class NotificationParkerActivity extends AppCompatActivity implements Vie
         btn_pay = (Button)findViewById(R.id.btn_pay);
         btn_pay.setOnClickListener(this);
 
-        if(citation_status.equals("Cited")){
+        if(citation_status.equals("Pending")){
             btn_reply.setEnabled(true);
-            btn_pay.setEnabled(false);
+            btn_pay.setEnabled(true);
         }
         else if(citation_status.equals("Confirmed")){
             btn_reply.setEnabled(false);
@@ -49,6 +49,10 @@ public class NotificationParkerActivity extends AppCompatActivity implements Vie
         tv_vehicle.setText(vehicle);
         tv_pos = (TextView)findViewById(R.id.tv_parkedPos);
         tv_pos.setText(pos);
+
+        if(citation_status.equals("Confirmed")){
+            btn_reply.setEnabled(false);
+        }
 
 
     }
@@ -62,6 +66,8 @@ public class NotificationParkerActivity extends AppCompatActivity implements Vie
         }
         else if(v == btn_reply){
             AlertDialog.Builder builder = new AlertDialog.Builder(NotificationParkerActivity.this);
+
+            citation.setCitationStatus("Appealed");
 
             // Set the message show for the Alert time
             builder.setMessage("Your appeal is sent to the manager");

@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.Menu;
 
@@ -20,6 +21,8 @@ public class HamburgerMenuActivity extends AppCompatActivity {
     public ActionBarDrawerToggle actionBarDrawerToggle;
     GlobalData global;
     citationTableModel citation;
+
+    String loggedin_ID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,11 @@ public class HamburgerMenuActivity extends AppCompatActivity {
         // drawer and back button to close drawer
         drawerLayout = findViewById(R.id.my_drawer_layout);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close);
+
+        loggedin_ID = global.getLoggedin_ID();
+
+        accountControl(loggedin_ID);
+        Log.d("Hamburger", loggedin_ID);
 
 
 //        hideItem(R.id.nav_Create_Parking_Citation); // Hide parking citation menu for general parkers
@@ -81,13 +89,13 @@ public class HamburgerMenuActivity extends AppCompatActivity {
                     return true;
                 }
                 else if(id == R.id.nav_Notification_parker){
-                    if(citation.getCitationStatus() != null) {
+                    if(citation.getCitationStatus() == "Pending" || citation.getCitationStatus() == "Confirmed") {
                         Intent intent = new Intent(getApplicationContext(), NotificationParkerActivity.class);
                         startActivity(intent);
                         finish();
                         return true;
                     }
-                    else if(citation.getCitationStatus() == null){
+                    else if(citation.getCitationStatus() == null || citation.getCitationStatus() == "Paid"){
                         AlertDialog.Builder builder = new AlertDialog.Builder(HamburgerMenuActivity.this);
 
                         // Set the message show for the Alert time
@@ -111,10 +119,34 @@ public class HamburgerMenuActivity extends AppCompatActivity {
                     }
                 }
                 else if(id == R.id.nav_Notification_manager){
-                    Intent intent = new Intent(getApplicationContext(), CreateParkingCitationActivity.class);
-                    startActivity(intent);
-                    finish();
-                    return true;
+                    if(citation.getCitationStatus() == "Appealed") {
+                        Intent intent = new Intent(getApplicationContext(), NotificationManagerActivity.class);
+                        startActivity(intent);
+                        finish();
+                        return true;
+                    }
+                    else if(citation.getCitationStatus() == null || citation.getCitationStatus() == "Paid" || citation.getCitationStatus() == "Cited" || citation.getCitationStatus() == "Pending"){
+                        AlertDialog.Builder builder = new AlertDialog.Builder(HamburgerMenuActivity.this);
+
+                        // Set the message show for the Alert time
+                        builder.setMessage("You have no notifications");
+
+                        // Set Alert Title
+                        builder.setTitle("Notification");
+
+                        // Set Cancelable false for when the user clicks on the outside the Dialog Box then it will remain show
+                        builder.setCancelable(false);
+
+                        // Set the positive button with yes name Lambda OnClickListener method is use of DialogInterface interface.
+                        builder.setPositiveButton("OK", null);
+
+
+
+                        // Create the Alert dialog
+                        AlertDialog alertDialog = builder.create();
+                        // Show the Alert Dialog box
+                        alertDialog.show();
+                    }
                 }
                 else if(id == R.id.nav_logout){
                     Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
@@ -128,11 +160,29 @@ public class HamburgerMenuActivity extends AppCompatActivity {
         );
     }
 
-    private void hideItem(int id)
+    private void hideItem(int menu_id)
     {
         NavigationView navigationView = (NavigationView) findViewById(R.id.my_nav_view);
         Menu nav_Menu = navigationView.getMenu();
-        nav_Menu.findItem(id).setVisible(false);
+        nav_Menu.findItem(menu_id).setVisible(false);
+    }
+
+    private void accountControl(String id){
+        if(id.equals("super") || id.equals(null)){
+            //Do nothing
+        }
+        else if(id.equals("admin")){ // parking manager
+            hideItem(R.id.nav_ParkingPass_Purchase);
+            hideItem(R.id.nav_ParkingPass_History);
+            hideItem(R.id.nav_View_ParkingPass);
+            hideItem(R.id.nav_Notification_parker);
+
+        }
+        else if(id.equals("user") || id.length() > 1){ // General parkers
+            hideItem(R.id.nav_Create_Parking_Citation);
+            hideItem(R.id.nav_Notification_manager);
+
+        }
     }
 //    public void removeItem(int id) {
 //        NavigationView navView = findViewById(R.id.my_nav_view); // Add your NavigationView id

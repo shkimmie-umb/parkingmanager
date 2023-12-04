@@ -23,6 +23,7 @@ public class PurchaseConfirmationActivity extends AppCompatActivity implements V
 
     TextView tv_rate;
     double rate;
+    int duration;
 
     Intent thisIntent;
     Intent checkoutIntent;
@@ -31,6 +32,7 @@ public class PurchaseConfirmationActivity extends AppCompatActivity implements V
 
     private double calculateRate(int duration, long selected_pass_id){
         double rate=0;
+        Log.d("Purchase Confirm: ", String.valueOf(selected_pass_id));
         if(selected_pass_id != 0){ // Semester pass
             if (duration < 60){
                 rate = 7.00;
@@ -84,7 +86,7 @@ public class PurchaseConfirmationActivity extends AppCompatActivity implements V
         thisIntent = getIntent();
         int pickedHour = thisIntent.getIntExtra("picked_hour", 0);
         int pickedMinute = thisIntent.getIntExtra("picked_minute", 0);
-        selected_pass_id = thisIntent.getIntExtra("selected_pass_id", 0);
+        selected_pass_id = thisIntent.getLongExtra("selected_pass_id", 0);
         selected_pass = thisIntent.getStringExtra("selected_pass");
         Log.d("Purchase Confirmation activity: ", String.valueOf(selected_pass_id));
         SimpleDateFormat endTimeSDF = new SimpleDateFormat("HH:mm:ss z");
@@ -95,7 +97,7 @@ public class PurchaseConfirmationActivity extends AppCompatActivity implements V
 
         tv_duration = (TextView)findViewById((R.id.textView_duration));
         SimpleDateFormat durationSDF = new SimpleDateFormat("mm");
-        int duration = (Math.abs(today.getHours()-pickedHour)*60) + (Math.abs(today.getMinutes()-pickedMinute));
+        duration = (Math.abs(today.getHours()-pickedHour)*60) + (Math.abs(today.getMinutes()-pickedMinute));
         try {
             Date dt = durationSDF.parse(String.valueOf(duration));
             durationSDF = new SimpleDateFormat("HH:mm");
@@ -118,6 +120,15 @@ public class PurchaseConfirmationActivity extends AppCompatActivity implements V
         checkoutIntent.putExtra("selected_pass", selected_pass);
         Log.d("(Purchase Confirm act) selected_pass: ", selected_pass);
 
+
+    }
+    @Override
+    public void onResume(){
+        super.onResume();
+
+        rate = calculateRate(duration, selected_pass_id);
+
+        tv_rate.setText("$" + String.format("%.2f", rate));
 
     }
     @Override

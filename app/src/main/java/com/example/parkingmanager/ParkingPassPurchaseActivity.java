@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.TimePicker;
 
 
@@ -30,8 +31,13 @@ public class ParkingPassPurchaseActivity extends AppCompatActivity implements Vi
     String selectedCar;
     long selectedCarId;
 
+    RadioButton oncampus, offcampus;
+
     int pickedHour=0;
     int pickedMinute=0;
+
+    AutoCompleteTextView actv_car;
+    AutoCompleteTextView actv_pass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +52,9 @@ public class ParkingPassPurchaseActivity extends AppCompatActivity implements Vi
         buttonGotoPaymentDetail = (Button) findViewById(R.id.btn_purchase_pass);
 //        previewSelectedTimeTextView = findViewById<TextView>(R.id.preview_picked_time_textView)
 
+        oncampus = (RadioButton)findViewById(R.id.radio_oncampus);
+        offcampus = (RadioButton)findViewById(R.id.radio_offcampus);
+
         buttonPickTime.setOnClickListener(this);
         btn_home.setOnClickListener(this);
         buttonGotoPaymentDetail.setOnClickListener(this);
@@ -57,15 +66,16 @@ public class ParkingPassPurchaseActivity extends AppCompatActivity implements Vi
         ArrayAdapter<String> arrayAdapter_car = new ArrayAdapter<String>(this,
                 R.layout.dropdown_style, carArray);
 
-        AutoCompleteTextView actv_car = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView_car);
+        actv_car = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView_car);
         actv_car.setAdapter(arrayAdapter_car);
 
         String[] passArray = getResources().getStringArray(R.array.pass_type);
         ArrayAdapter<String> arrayAdapter_pass = new ArrayAdapter<String>(this,
                 R.layout.dropdown_style, passArray);
 
-        AutoCompleteTextView actv_pass = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView_pass);
+        actv_pass = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView_pass);
         actv_pass.setAdapter(arrayAdapter_pass);
+
 
         // Define car selection listener
         actv_car.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -83,7 +93,8 @@ public class ParkingPassPurchaseActivity extends AppCompatActivity implements Vi
         actv_pass.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick (AdapterView<?> parent, View view, int position, long id) {
-//                Log.d("TAG", actv_pass.getText().toString());
+                Log.d("Purchase id", String.valueOf(id));
+                Log.d("Purchase pos", String.valueOf(position));
                 selectedPassId = id;
                 selectedPass = actv_pass.getText().toString();
                 if(id==1) { // Only Day pass is to pick time
@@ -99,8 +110,9 @@ public class ParkingPassPurchaseActivity extends AppCompatActivity implements Vi
 
 
 
-
     }
+
+
 
     @Override
     public void onClick(View v) {
@@ -118,7 +130,7 @@ public class ParkingPassPurchaseActivity extends AppCompatActivity implements Vi
 
         } else if (v == buttonGotoPaymentDetail) {
 
-            if(selectedCar != null && selectedPass != null){
+            if(selectedCar != null && selectedPass != null && (oncampus.isChecked() || offcampus.isChecked())){
                 // Sending data to calculate the amount to pay in PurchaseConfirmationActivity activity
                 purchaseConfirmIntent = new Intent(getApplicationContext(), PurchaseConfirmationActivity.class);
                 purchaseConfirmIntent.putExtra("picked_hour", pickedHour);
@@ -134,7 +146,7 @@ public class ParkingPassPurchaseActivity extends AppCompatActivity implements Vi
                 AlertDialog.Builder builder = new AlertDialog.Builder(ParkingPassPurchaseActivity.this);
 
                 // Set the message show for the Alert time
-                builder.setMessage("Please select a car and a parking pass type");
+                builder.setMessage("Please select car, parking pass type, and on/off campus");
 
                 // Set Alert Title
                 builder.setTitle("Required fields error");

@@ -6,6 +6,7 @@ import android.provider.Settings;
 import java.util.ArrayList;
 
 public class GlobalData extends Application {
+    private static String loggedin_ID;
     private ArrayList<purchaseTableModel> passList;
     private static citationTableModel citation;
     private static double calculated_rate;
@@ -17,6 +18,7 @@ public class GlobalData extends Application {
     @Override
     public void onCreate() {
         //전역 변수 초기화
+        loggedin_ID = null;
         calculated_rate = 0;
         paid_date = null;
         selected_pass = null;
@@ -31,6 +33,9 @@ public class GlobalData extends Application {
         super.onTerminate();
     }
 
+    public void setLoggedin_ID(String id){
+        GlobalData.loggedin_ID = id;
+    }
     public void setCalculated_rate(double calculated_rate){
         GlobalData.calculated_rate = calculated_rate;
     }
@@ -51,6 +56,9 @@ public class GlobalData extends Application {
         passList.add(pass);
     }
 
+    public String getLoggedin_ID(){
+        return loggedin_ID;
+    }
     public double getCalculated_rate(){
         return calculated_rate;
     }
