@@ -12,9 +12,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
 import java.util.List;
-import com.example.parkingmanager.Lot;
 
 public class ParkingSelectionActivity extends AppCompatActivity {
 
@@ -30,7 +28,6 @@ public class ParkingSelectionActivity extends AppCompatActivity {
         tableLayout = findViewById(R.id.table_layout);
         spinner = findViewById(R.id.spinner);
 
-//        lots = generateRandomLotData();
 
         populateTable();
 
@@ -45,28 +42,15 @@ public class ParkingSelectionActivity extends AppCompatActivity {
             row.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    // Get the lot object for the clicked row
                     Lot lot = lots.get(i);
-
-                    // Generate a new interactive map for the lot
-                    generateInteractiveMap(lot);
                 }
             });
         }
 
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                // Get the selected lot
-                Lot lot = lots.get(position);
-
-                // Enable or disable the dropdown list based on the selected lot
-                if (lot.getName().equals("West Garage")) {
-                    spinner.setEnabled(true);
-                } else {
-                    spinner.setEnabled(false);
-                }
-            }
+        Spinner dropdown = findViewById(R.id.spinner1);
+        String[] items = new String[]{"Floor 1", "Floor 2", "Floor 3"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        dropdown.setAdapter(adapter);
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -75,13 +59,6 @@ public class ParkingSelectionActivity extends AppCompatActivity {
         });
     }
 
-    private void generateInteractiveMap(Lot lot) {
-        Intent intent = new Intent(this, InteractiveMapActivity.class);
-
-        intent.putExtra("lot", lot);
-
-        startActivity(intent);
-    }
 
     private void populateTable() {
         for (Lot lot : lots) {

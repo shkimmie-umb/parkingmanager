@@ -73,6 +73,12 @@ public class HamburgerMenuActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                     return true;
+                }else if (id == R.id.nav_Parking_Availability) {
+                    // Code to navigate to your new module
+                    Intent intent = new Intent(getApplicationContext(), ParkingSelectionActivity.class);
+                    startActivity(intent);
+                    finish();
+                    return true;
                 }
                 return false;
                   }

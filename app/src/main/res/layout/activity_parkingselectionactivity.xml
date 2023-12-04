@@ -1,26 +1,93 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/textView_title2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="150px"
+        android:layout_marginEnd="32dp"
+        android:text="Select a Parking Spot"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:paddingTop="10px">
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
     <TableLayout
         android:id="@+id/table_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:divider="?android:attr/dividerHorizontal"
+        android:showDividers="beginning|middle|end"
+        >
+        <TableRow
+            android:id="@+id/table_row_header"
+            android:clickable="true"
+            android:onClick="onLotClicked">
 
+            <TextView
+                android:id="@+id/Lot_header"
+                android:text="Parking Facility"
+                android:textStyle="bold"/>
+
+
+            <TextView
+                android:id="@+id/total_spots"
+                android:text="Total Spots"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/occupied_spots"
+                android:text="Occupied Spots"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/remaining_spots"
+                android:text="Remaining Spots"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/occupancy_rate"
+                android:text="%"
+                android:textStyle="bold"/>
+        </TableRow>
         <TableRow
             android:id="@+id/table_row_west_garage"
             android:clickable="true"
             android:onClick="onLotClicked">
 
             <TextView
-                android:id="@+id/lot_name_text_view"
+                android:id="@+id/west_garage_lot_name_text_view"
                 android:text="West Garage" />
 
+
             <TextView
-                android:id="@+id/occupancy_rate_text_view"
-                android:text="72%" />
+                android:id="@+id/west_garage_total_spots"
+                android:text="3000" />
+
+            <TextView
+                android:id="@+id/west_garage_occupied_spots"
+                android:text="2138" />
+
+            <TextView
+                android:id="@+id/west_garage_remaining_spots"
+                android:text="862" />
+
+            <TextView
+                android:id="@+id/west_garage_occupancy_rate"
+                android:text="82%" />
         </TableRow>
 
         <TableRow
@@ -29,11 +96,21 @@
             android:onClick="onLotClicked">
 
             <TextView
-                android:id="@+id/lot_name_text_view"
+                android:id="@+id/lot_d_text_view"
                 android:text="Lot D" />
 
             <TextView
-                android:id="@+id/occupancy_rate_text_view"
+                android:id="@+id/lot_d_total_spots"
+                android:text="300" />
+
+            <TextView
+                android:id="@+id/lot_d_occupied_spots"
+                android:text="250" />
+            <TextView
+                android:id="@+id/lot_d_remaining_spots"
+                android:text="50" />
+            <TextView
+                android:id="@+id/lot_d_occupancy_rate"
                 android:text="83%" />
         </TableRow>
 
@@ -43,11 +120,21 @@
             android:onClick="onLotClicked">
 
             <TextView
-                android:id="@+id/lot_name_text_view"
-                android:text="Campus Center 500" />
+                android:id="@+id/campus_center_text_view"
+                android:text="Campus Center" />
 
             <TextView
-                android:id="@+id/occupancy_rate_text_view"
+                android:id="@+id/campus_center_total_spots"
+                android:text="500" />
+
+            <TextView
+                android:id="@+id/campus_center_occupied_spots"
+                android:text="500" />
+            <TextView
+                android:id="@+id/campus_center_remaining_spots"
+                android:text="0" />
+            <TextView
+                android:id="@+id/campus_center_occupancy_rate"
                 android:text="100%" />
         </TableRow>
 
@@ -57,19 +144,73 @@
             android:onClick="onLotClicked">
 
             <TextView
-                android:id="@+id/lot_name_text_view"
+                android:id="@+id/bayside_text_view"
                 android:text="Bayside" />
 
             <TextView
-                android:id="@+id/occupancy_rate_text_view"
+                android:id="@+id/bayside_total_spots"
+                android:text="2300" />
+
+            <TextView
+                android:id="@+id/bayside_occupied_spots"
+                android:text="300" />
+            <TextView
+                android:id="@+id/bayside_remaining_spots"
+                android:text="2000" />
+            <TextView
+                android:id="@+id/bayside_occupancy_rate"
                 android:text="13%" />
         </TableRow>
     </TableLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <Spinner
+                android:id="@+id/spinner1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/btn_dropdown"
+                android:spinnerMode="dropdown"/>
+            </LinearLayout>
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:entries="@array/floors" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-</LinearLayout>
+                <ImageView
+                    android:layout_width="10mm"
+                    android:layout_height="10mm"
+                    android:layout_gravity="right"
+                    android:src="@drawable/occupied"
+                    app:tint="@color/white" />
+
+                <ImageView
+                    android:layout_width="10mm"
+                    android:layout_height="10mm"
+                    android:src="@drawable/available"
+                    app:tint="@color/white" />
+
+                <ImageView
+                    android:layout_width="10mm"
+                    android:layout_height="10mm"
+                    android:background="@color/black"
+                    android:src="@drawable/occupied"
+                    app:tint="@color/black" />
+
+                <ImageView
+                    android:layout_width="10mm"
+                    android:layout_height="10mm"
+                    android:layout_gravity="right"
+                    android:src="@drawable/available"
+                    app:tint="@color/white" />
+
+                <ImageView
+                    android:layout_width="10mm"
+                    android:layout_height="10mm"
+                    android:layout_gravity="right"
+                    android:src="@drawable/available"
+                    app:tint="@color/white" />
+
+
+            </LinearLayout>
