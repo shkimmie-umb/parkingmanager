@@ -24,7 +24,13 @@
         android:title="Create a Citation" />
 
     <item
-        android:id="@+id/nav_Notification"
-        android:title="Notification" />
+        android:id="@+id/nav_Notification_parker"
+        android:title="Notification (Parker)" />
+    <item
+        android:id="@+id/nav_Notification_manager"
+        android:title="Notification (Manager)" />
+    <item
+        android:id="@+id/nav_logout"
+        android:title="Log out" />
 
 </menu>

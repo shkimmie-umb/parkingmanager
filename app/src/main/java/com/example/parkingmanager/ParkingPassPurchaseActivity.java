@@ -1,6 +1,7 @@
 package com.example.parkingmanager;
 
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.TimePicker;
 
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Date;
@@ -28,7 +30,8 @@ public class ParkingPassPurchaseActivity extends AppCompatActivity implements Vi
     String selectedCar;
     long selectedCarId;
 
-    int pickedHour, pickedMinute;
+    int pickedHour=0;
+    int pickedMinute=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,19 +118,43 @@ public class ParkingPassPurchaseActivity extends AppCompatActivity implements Vi
 
         } else if (v == buttonGotoPaymentDetail) {
 
-            // Sending data to calculate the amount to pay in PurchaseConfirmationActivity activity
-            purchaseConfirmIntent = new Intent(getApplicationContext(), PurchaseConfirmationActivity.class);
-            purchaseConfirmIntent.putExtra("picked_hour", pickedHour);
-            purchaseConfirmIntent.putExtra("picked_minute", pickedMinute);
-            purchaseConfirmIntent.putExtra("selected_car_id", selectedCarId);
-            purchaseConfirmIntent.putExtra("selected_car", selectedCar);
-            purchaseConfirmIntent.putExtra("selected_pass_id", selectedPassId);
-            purchaseConfirmIntent.putExtra("selected_pass", selectedPass);
+            if(selectedCar != null && selectedPass != null){
+                // Sending data to calculate the amount to pay in PurchaseConfirmationActivity activity
+                purchaseConfirmIntent = new Intent(getApplicationContext(), PurchaseConfirmationActivity.class);
+                purchaseConfirmIntent.putExtra("picked_hour", pickedHour);
+                purchaseConfirmIntent.putExtra("picked_minute", pickedMinute);
+                purchaseConfirmIntent.putExtra("selected_car_id", selectedCarId);
+                purchaseConfirmIntent.putExtra("selected_car", selectedCar);
+                purchaseConfirmIntent.putExtra("selected_pass_id", selectedPassId);
+                purchaseConfirmIntent.putExtra("selected_pass", selectedPass);
+                startActivity(purchaseConfirmIntent);
+                finish();
+            }
+            else{
+                AlertDialog.Builder builder = new AlertDialog.Builder(ParkingPassPurchaseActivity.this);
 
-//            checkoutIntent = new Intent(getApplicationContext(), CheckoutActivity.class);
+                // Set the message show for the Alert time
+                builder.setMessage("Please select a car and a parking pass type");
 
-            startActivity(purchaseConfirmIntent);
-            finish();
+                // Set Alert Title
+                builder.setTitle("Required fields error");
+
+                // Set Cancelable false for when the user clicks on the outside the Dialog Box then it will remain show
+                builder.setCancelable(false);
+
+                // Set the positive button with yes name Lambda OnClickListener method is use of DialogInterface interface.
+                builder.setPositiveButton("OK", (DialogInterface.OnClickListener) (dialog, which) -> {
+                    // When the user click yes button then app will close
+
+
+                });
+
+                // Create the Alert dialog
+                AlertDialog alertDialog = builder.create();
+                // Show the Alert Dialog box
+                alertDialog.show();
+            }
+
         }
         else if(v == btn_home){
             if (v == btn_home){

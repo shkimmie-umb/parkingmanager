@@ -21,12 +21,14 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
     double calculated_rate;
     String selected_pass;
     GlobalData global;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.purchase_checkout);
 
         global = (GlobalData)getApplication();
+
 
         btn_pay = (Button)findViewById(R.id.btn_proceedToPay);
         btn_pay.setOnClickListener(this);

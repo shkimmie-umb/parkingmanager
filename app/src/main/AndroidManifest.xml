@@ -14,7 +14,7 @@
         android:name=".GlobalData"
         tools:targetApi="31">
         <activity
-            android:name=".HamburgerMenuActivity"
+            android:name=".LoginActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.AppCompat">
@@ -26,6 +26,13 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".HamburgerMenuActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.MaterialComponents">
+
         </activity>
         <activity
             android:name=".ParkingPassPurchaseActivity"
@@ -64,6 +71,13 @@
         </activity>
         <activity
             android:name=".CreateParkingCitationActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.MaterialComponents">
+
+        </activity>
+        <activity
+            android:name=".NotificationParkerActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.MaterialComponents">

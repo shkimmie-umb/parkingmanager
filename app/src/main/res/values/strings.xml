@@ -8,6 +8,19 @@
         <item>Sister Car</item>
         <item>My Second Car</item>
     </string-array>
+    <string-array name="plate_list">
+        <item>My Car(2016 Ford Focus, VA, TVE-8734)</item>
+        <item>Parents Car(2018 Ford Kuga, MA, 8WEA 62)</item>
+        <item>Sister Car(2021 Fiat 500, MA, 9DLK 15)</item>
+        <item>My Second Car(2005 Kia Rio, TX, TXY 2845)</item>
+    </string-array>
+    <string-array name="citation_type_list">
+        <item>Parking on a handicapped spot</item>
+        <item>Parking on a reserved spot</item>
+        <item>Overnight parking</item>
+        <item>Blocking hydrant</item>
+        <item>Other reasons</item>
+    </string-array>
     <string-array name="pass_type">
         <item>2023 Semester pass</item>
         <item>Day pass</item>

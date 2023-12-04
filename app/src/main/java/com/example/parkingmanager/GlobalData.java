@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class GlobalData extends Application {
     private ArrayList<purchaseTableModel> passList;
+    private static citationTableModel citation;
     private static double calculated_rate;
     private static String paid_date;
     private static String selected_pass;
@@ -21,6 +22,7 @@ public class GlobalData extends Application {
         selected_pass = null;
         passList = new ArrayList<purchaseTableModel>();
         parkingpass_status = "Invalid";
+        citation = new citationTableModel();
         super.onCreate();
     }
 
@@ -42,6 +44,9 @@ public class GlobalData extends Application {
     public void setParkingpass_status(String new_status){
         GlobalData.parkingpass_status = new_status;
     }
+    public void setCitationTable(citationTableModel citation){
+        this.citation = citation;
+    }
     public void addPass(purchaseTableModel pass){
         passList.add(pass);
     }
@@ -62,5 +67,9 @@ public class GlobalData extends Application {
     public String getParkingpass_status(){
         return parkingpass_status;
     }
+    public citationTableModel getCitationTable(){
+        return citation;
+    }
+
 
 }
