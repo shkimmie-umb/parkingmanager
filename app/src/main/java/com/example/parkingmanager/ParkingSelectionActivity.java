@@ -26,17 +26,14 @@ public class ParkingSelectionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_parkingselectionactivity);
 
         tableLayout = findViewById(R.id.table_layout);
-        spinner = findViewById(R.id.spinner);
+        spinner = findViewById(R.id.spinner1);
 
-
-        populateTable();
 
         if (spinner.getSelectedItem().toString().equals("West Garage")) {
             spinner.setEnabled(true);
         } else {
             spinner.setEnabled(false);
         }
-
         for (int i = 0; i < tableLayout.getChildCount(); i++) {
             View row = tableLayout.getChildAt(i);
             row.setOnClickListener(new View.OnClickListener() {
@@ -52,26 +49,5 @@ public class ParkingSelectionActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         dropdown.setAdapter(adapter);
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Do nothing
-            }
-        });
-    }
 
-
-    private void populateTable() {
-        for (Lot lot : lots) {
-            View row = LayoutInflater.from(this).inflate(R.layout.table_row, tableLayout, false);
-
-            TextView lotNameTextView = row.findViewById(R.id.lot_name_text_view);
-            TextView occupancyRateTextView = row.findViewById(R.id.occupancy_rate_text_view);
-
-            lotNameTextView.setText(lot.getName());
-            occupancyRateTextView.setText(String.valueOf(lot.getOccupancyRate())); // Assuming occupancyRate is a double
-
-            tableLayout.addView(row);
-        }
-    }
-
-}
+}}
