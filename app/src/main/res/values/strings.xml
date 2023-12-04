@@ -12,4 +12,10 @@
         <item>2023 Semester pass</item>
         <item>Day pass</item>
     </string-array>
+    <string-array name="parking_categories">
+        <item>Floor 1</item>
+        <item>Floor 2</item>
+        <item>Floor 3</item>
+        <!-- Add more items as needed -->
+    </string-array>
 </resources>
