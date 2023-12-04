@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TableLayout
+        android:id="@+id/table_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:id="@+id/table_row_west_garage"
+            android:clickable="true"
+            android:onClick="onLotClicked">
+
+            <TextView
+                android:id="@+id/lot_name_text_view"
+                android:text="West Garage" />
+
+            <TextView
+                android:id="@+id/occupancy_rate_text_view"
+                android:text="72%" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/table_row_lot_d"
+            android:clickable="true"
+            android:onClick="onLotClicked">
+
+            <TextView
+                android:id="@+id/lot_name_text_view"
+                android:text="Lot D" />
+
+            <TextView
+                android:id="@+id/occupancy_rate_text_view"
+                android:text="83%" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/table_row_campus_center_500"
+            android:clickable="true"
+            android:onClick="onLotClicked">
+
+            <TextView
+                android:id="@+id/lot_name_text_view"
+                android:text="Campus Center 500" />
+
+            <TextView
+                android:id="@+id/occupancy_rate_text_view"
+                android:text="100%" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/table_row_bayside"
+            android:clickable="true"
+            android:onClick="onLotClicked">
+
+            <TextView
+                android:id="@+id/lot_name_text_view"
+                android:text="Bayside" />
+
+            <TextView
+                android:id="@+id/occupancy_rate_text_view"
+                android:text="13%" />
+        </TableRow>
+    </TableLayout>
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/floors" />
+
+</LinearLayout>
