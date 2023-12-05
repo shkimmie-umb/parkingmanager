@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ParkingSelectionActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,16 @@ public class ParkingSelectionActivity extends AppCompatActivity {
         ImageView imageViewSpot4 = findViewById(R.id.imageViewSpot4);
         ImageView imageViewSpot5 = findViewById(R.id.imageViewSpot5);
 
+        Button backBtn = findViewById(R.id.back_btn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Add logic to navigate to HamburgerMenuActivity
+                Intent intent = new Intent(ParkingSelectionActivity.this, HamburgerMenuActivity.class);
+                startActivity(intent);
+            }
+        });
+
         titleTextView.setText("Select a Parking Spot");
 
         // Setup spinner
@@ -41,6 +52,7 @@ public class ParkingSelectionActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
+
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
@@ -51,11 +63,10 @@ public class ParkingSelectionActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
-                // Do nothing here
             }
+
         });
 
-        // Set up OnClickListener for each ImageView
         imageViewSpot1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,3 +123,4 @@ public class ParkingSelectionActivity extends AppCompatActivity {
         startActivity(intent);
     }
 }
+

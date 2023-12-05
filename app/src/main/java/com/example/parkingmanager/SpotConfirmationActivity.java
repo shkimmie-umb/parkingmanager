@@ -2,6 +2,8 @@ package com.example.parkingmanager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +14,15 @@ public class SpotConfirmationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spotconfirmation);
+
+        Button home_Btn = findViewById(R.id.home_btn);
+        home_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SpotConfirmationActivity.this, HamburgerMenuActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // Find views by their IDs
         TextView titleTextView = findViewById(R.id.textView_title2);
