@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.Menu;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -24,6 +25,8 @@ public class HamburgerMenuActivity extends AppCompatActivity {
 
     String loggedin_ID;
 
+    TextView welcome;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +34,10 @@ public class HamburgerMenuActivity extends AppCompatActivity {
 
         global = (GlobalData)getApplication();
         citation = global.getCitationTable();
+
+        welcome = (TextView)findViewById(R.id.tv_welcome);
+        String welcome_str = "Welcome, " + global.getLoggedin_ID() + "!\n" + "Please select a menu from the left navigation";
+        welcome.setText(welcome_str);
 
         // drawer layout instance to toggle the menu icon to open
         // drawer and back button to close drawer
@@ -95,7 +102,7 @@ public class HamburgerMenuActivity extends AppCompatActivity {
                         finish();
                         return true;
                     }
-                    else if(citation.getCitationStatus() == null || citation.getCitationStatus() == "Paid"){
+                    else if(citation.getCitationStatus() == null || citation.getCitationStatus() == "Paid" || citation.getCitationStatus() == "Voided"){
                         AlertDialog.Builder builder = new AlertDialog.Builder(HamburgerMenuActivity.this);
 
                         // Set the message show for the Alert time
@@ -178,7 +185,7 @@ public class HamburgerMenuActivity extends AppCompatActivity {
             hideItem(R.id.nav_Notification_parker);
 
         }
-        else if(id.equals("user") || id.length() > 1){ // General parkers
+        else if(id.equals("user") || (!id.equals("admin") && !id.equals("super") && id.length() > 1)){ // General parkers
             hideItem(R.id.nav_Create_Parking_Citation);
             hideItem(R.id.nav_Notification_manager);
 

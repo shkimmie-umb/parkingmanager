@@ -14,6 +14,7 @@ public class NotificationParkerActivity extends AppCompatActivity implements Vie
     GlobalData global;
     Button btn_home, btn_reply, btn_pay;
     TextView tv_vehicle, tv_pos;
+    TextView tv_needsToPay, tv_correctOrPay;
     String vehicle, pos;
     String citation_status;
     citationTableModel citation;
@@ -50,8 +51,15 @@ public class NotificationParkerActivity extends AppCompatActivity implements Vie
         tv_pos = (TextView)findViewById(R.id.tv_parkedPos);
         tv_pos.setText(pos);
 
+        tv_needsToPay = (TextView)findViewById(R.id.tv_needsToPay);
+
+        tv_correctOrPay = (TextView)findViewById(R.id.tv_correctorpay);
+
         if(citation_status.equals("Confirmed")){
             btn_reply.setEnabled(false);
+            tv_needsToPay.setText("needs a payment");
+            tv_correctOrPay.setText("Please make a payment using the button below");
+
         }
 
 

@@ -37,6 +37,7 @@
             android:textSize="24sp"
             android:textStyle="bold" />
         <TextView
+            android:id="@+id/tv_needsToPay"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -48,6 +49,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/tv_correctorpay"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
