@@ -137,7 +137,7 @@ public class HamburgerMenuActivity extends AppCompatActivity {
                         finish();
                         return true;
                     }
-                    else if(citation.getCitationStatus() == null || citation.getCitationStatus() == "Paid" || citation.getCitationStatus() == "Cited" || citation.getCitationStatus() == "Pending"){
+                    else if(citation.getCitationStatus() == null || citation.getCitationStatus() == "Paid" || citation.getCitationStatus() == "Cited" || citation.getCitationStatus() == "Pending" || citation.getCitationStatus() == "Voided"){
                         AlertDialog.Builder builder = new AlertDialog.Builder(HamburgerMenuActivity.this);
 
                         // Set the message show for the Alert time
