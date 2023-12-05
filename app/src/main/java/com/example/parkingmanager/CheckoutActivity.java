@@ -65,8 +65,10 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
             Log.d("(Checkout act) selected_pass:", selected_pass);
 
             citation = global.getCitationTable();
-            if(citation.getCitationStatus().equals("Cited") || citation.getCitationStatus().equals("Pending") || citation.getCitationStatus().equals("Appealed") || citation.getCitationStatus() == "Confirmed") {
-                citation.setCitationStatus("Paid");
+            if(citation.getCitationStatus() != null) {
+                if (citation.getCitationStatus().equals("Cited") || citation.getCitationStatus().equals("Pending") || citation.getCitationStatus().equals("Appealed") || citation.getCitationStatus() == "Confirmed") {
+                    citation.setCitationStatus("Paid");
+                }
             }
 
             purchaseTableModel item1, item2, item3, item4, item5;
