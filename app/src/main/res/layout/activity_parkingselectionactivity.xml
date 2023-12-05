@@ -2,6 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/white"
     android:orientation="vertical">
 
     <TextView
@@ -40,54 +41,65 @@
             <TextView
                 android:id="@+id/Lot_header"
                 android:text="Parking Facility"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
 
 
             <TextView
                 android:id="@+id/total_spots"
                 android:text="Total Spots"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/occupied_spots"
                 android:text="Occupied Spots"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/remaining_spots"
                 android:text="Remaining Spots"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/occupancy_rate"
                 android:text="%"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
         </TableRow>
         <TableRow
             android:id="@+id/table_row_west_garage"
             android:clickable="true"
-            android:onClick="onLotClicked">
+            android:onClick="onLotClicked"
+            >
 
             <TextView
                 android:id="@+id/west_garage_lot_name_text_view"
-                android:text="West Garage" />
+                android:text="West Garage"
+                android:textColor="@color/black"/>
 
 
             <TextView
                 android:id="@+id/west_garage_total_spots"
-                android:text="3000" />
+                android:text="3000"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/west_garage_occupied_spots"
-                android:text="2138" />
+                android:text="2138"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/west_garage_remaining_spots"
-                android:text="862" />
+                android:text="862"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/west_garage_occupancy_rate"
-                android:text="82%" />
+                android:text="82%"
+                android:textColor="@color/black"/>
         </TableRow>
 
         <TableRow
@@ -97,21 +109,26 @@
 
             <TextView
                 android:id="@+id/lot_d_text_view"
-                android:text="Lot D" />
+                android:text="Lot D"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/lot_d_total_spots"
-                android:text="300" />
+                android:text="300"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/lot_d_occupied_spots"
-                android:text="250" />
+                android:text="250"
+                android:textColor="@color/black"/>
             <TextView
                 android:id="@+id/lot_d_remaining_spots"
-                android:text="50" />
+                android:text="50"
+                android:textColor="@color/black"/>
             <TextView
                 android:id="@+id/lot_d_occupancy_rate"
-                android:text="83%" />
+                android:text="83%"
+                android:textColor="@color/black"/>
         </TableRow>
 
         <TableRow
@@ -121,21 +138,26 @@
 
             <TextView
                 android:id="@+id/campus_center_text_view"
-                android:text="Campus Center" />
+                android:text="Campus Center"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/campus_center_total_spots"
-                android:text="500" />
+                android:text="500"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/campus_center_occupied_spots"
-                android:text="500" />
+                android:text="500"
+                android:textColor="@color/black"/>
             <TextView
                 android:id="@+id/campus_center_remaining_spots"
-                android:text="0" />
+                android:text="0"
+                android:textColor="@color/black"/>
             <TextView
                 android:id="@+id/campus_center_occupancy_rate"
-                android:text="100%" />
+                android:text="100%"
+                android:textColor="@color/black"/>
         </TableRow>
 
         <TableRow
@@ -145,21 +167,26 @@
 
             <TextView
                 android:id="@+id/bayside_text_view"
-                android:text="Bayside" />
+                android:text="Bayside"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/bayside_total_spots"
-                android:text="2300" />
+                android:text="2300"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/bayside_occupied_spots"
-                android:text="300" />
+                android:text="300"
+                android:textColor="@color/black"/>
             <TextView
                 android:id="@+id/bayside_remaining_spots"
-                android:text="2000" />
+                android:text="2000"
+                android:textColor="@color/black"/>
             <TextView
                 android:id="@+id/bayside_occupancy_rate"
-                android:text="13%" />
+                android:text="13%"
+                android:textColor="@color/black"/>
         </TableRow>
     </TableLayout>
             <LinearLayout
@@ -170,7 +197,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:drawable/btn_dropdown"
-                android:spinnerMode="dropdown"/>
+                android:spinnerMode="dropdown"
+                android:textColor="@color/black"/>
             </LinearLayout>
 
             <LinearLayout
@@ -184,14 +212,14 @@
                     android:layout_height="10mm"
                     android:layout_gravity="right"
                     android:src="@drawable/occupied"
-                    app:tint="@color/white" />
+                     />
 
                 <ImageView
                     android:id="@+id/imageViewSpot2"
                     android:layout_width="10mm"
                     android:layout_height="10mm"
                     android:src="@drawable/available"
-                    app:tint="@color/white" />
+                     />
 
                 <ImageView
                     android:id="@+id/imageViewSpot3"
@@ -199,7 +227,7 @@
                     android:layout_height="10mm"
                     android:background="@color/black"
                     android:src="@drawable/occupied"
-                    app:tint="@color/black" />
+                     />
 
                 <ImageView
                     android:id="@+id/imageViewSpot4"
@@ -207,7 +235,7 @@
                     android:layout_height="10mm"
                     android:layout_gravity="right"
                     android:src="@drawable/available"
-                    app:tint="@color/white" />
+                     />
 
                 <ImageView
                     android:id="@+id/imageViewSpot5"
@@ -215,7 +243,7 @@
                     android:layout_height="10mm"
                     android:layout_gravity="right"
                     android:src="@drawable/available"
-                    app:tint="@color/white" />
+                    />
 
 
             </LinearLayout>
