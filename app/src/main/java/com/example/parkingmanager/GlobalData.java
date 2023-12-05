@@ -6,7 +6,9 @@ import android.provider.Settings;
 import java.util.ArrayList;
 
 public class GlobalData extends Application {
+    private static String loggedin_ID;
     private ArrayList<purchaseTableModel> passList;
+    private static citationTableModel citation;
     private static double calculated_rate;
     private static String paid_date;
     private static String selected_pass;
@@ -16,11 +18,13 @@ public class GlobalData extends Application {
     @Override
     public void onCreate() {
         //전역 변수 초기화
+        loggedin_ID = null;
         calculated_rate = 0;
         paid_date = null;
         selected_pass = null;
         passList = new ArrayList<purchaseTableModel>();
         parkingpass_status = "Invalid";
+        citation = new citationTableModel();
         super.onCreate();
     }
 
@@ -29,6 +33,9 @@ public class GlobalData extends Application {
         super.onTerminate();
     }
 
+    public void setLoggedin_ID(String id){
+        GlobalData.loggedin_ID = id;
+    }
     public void setCalculated_rate(double calculated_rate){
         GlobalData.calculated_rate = calculated_rate;
     }
@@ -42,10 +49,16 @@ public class GlobalData extends Application {
     public void setParkingpass_status(String new_status){
         GlobalData.parkingpass_status = new_status;
     }
+    public void setCitationTable(citationTableModel citation){
+        this.citation = citation;
+    }
     public void addPass(purchaseTableModel pass){
         passList.add(pass);
     }
 
+    public String getLoggedin_ID(){
+        return loggedin_ID;
+    }
     public double getCalculated_rate(){
         return calculated_rate;
     }
@@ -62,5 +75,9 @@ public class GlobalData extends Application {
     public String getParkingpass_status(){
         return parkingpass_status;
     }
+    public citationTableModel getCitationTable(){
+        return citation;
+    }
+
 
 }

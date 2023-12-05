@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 
@@ -97,10 +98,14 @@ public class PurchaseHistoryActivity extends AppCompatActivity implements View.O
 
 
 
-        if(calculated_rate != 0 && selected_pass != null){
-            purchaseTableModel item = new purchaseTableModel(selected_pass, "Active", paid_date, "$" + String.valueOf(calculated_rate));
-            passList.add(item);
-        }
+//        if(calculated_rate != 0 && selected_pass != null){
+//            DecimalFormat df = new DecimalFormat("#.00");
+//            String calculatedRateFormatted = df.format(calculated_rate);
+//
+//
+//            purchaseTableModel item = new purchaseTableModel(selected_pass, "Active", paid_date, "$" + calculatedRateFormatted);
+//            passList.add(item);
+//        }
     }
 
     @Override

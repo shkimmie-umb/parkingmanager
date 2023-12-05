@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@drawable/westgarage"
+	android:clickable="true"
+	android:focusableInTouchMode="true"
+	tools:context=".LoginActivity">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		android:background="#3fff"
+		android:gravity="center"
+		android:padding="10dp">
+
+		<ImageView
+			android:id="@+id/iv_violation"
+			android:layout_width="202dp"
+			android:layout_height="194dp"
+			android:paddingLeft="0px"
+			android:paddingTop="0px"
+			android:src="@drawable/login_logo" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="UMB Parking Manager"
+			android:gravity="center"
+			android:textColor="@color/black"
+			android:textSize="24sp"
+			android:textStyle="bold"/>
+		<EditText
+			android:id="@+id/et_ID"
+			android:layout_marginTop="15dp"
+			android:gravity="center"
+			android:layout_width="250dp"
+			android:layout_height="40dp"
+			android:hint="ID (super, admin, user)"
+			android:textColorHint="#FFFBF6"
+			android:textSize="20sp"
+			android:textStyle="bold"
+			android:background="@layout/custombutton"
+			/>
+		<EditText
+			android:id="@+id/et_PW"
+			android:layout_marginTop="15dp"
+			android:gravity="center"
+			android:layout_width="250dp"
+			android:layout_height="40dp"
+			android:hint="PW"
+			android:textColorHint="#FFFBF6"
+			android:textSize="20sp"
+			android:textStyle="bold"
+			android:background="@layout/custombutton"/>
+			<CheckBox
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Keep me Signed in "
+				android:textColor="#FFFBF6"
+				android:hint="#FFFBF6"
+				android:textSize="17sp"
+				android:textStyle="bold"
+				android:layout_marginTop="15dp"
+				android:buttonTint="#FFFBF6"
+			/>
+		<Button
+			android:id="@+id/btn_signin"
+			android:layout_width="250dp"
+			android:layout_height="40dp"
+			android:text="Signin"
+			android:textSize="26sp"
+			android:textStyle="bold"
+			android:textAllCaps="false"
+			android:layout_marginTop="10dp"
+			android:background="@layout/custombutton2"
+			android:textColor="#FFFBF6"/>
+		<View
+			android:layout_width="fill_parent"
+			android:layout_height="2dp"
+			android:background="#3fff"
+			android:layout_marginTop="15dp"/>
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Forgot Password"
+			android:textSize="18dp"
+			android:layout_marginTop="15dp"
+			android:textColor="#FFFBF6"
+			/>
+
+	</LinearLayout>
+	
+</androidx.constraintlayout.widget.ConstraintLayout>

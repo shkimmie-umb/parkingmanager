@@ -5,7 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:clickable="true"
+    android:focusableInTouchMode="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,7 +32,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -51,7 +53,7 @@
                       an auto complete text view
                         and make its input type to none-->
                 <AutoCompleteTextView
-                    android:id="@+id/autoCompleteTextView_car"
+                    android:id="@+id/autoCompleteTextView_plate"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -100,7 +102,7 @@
                   an auto complete text view
                     and make its input type to none-->
             <AutoCompleteTextView
-                android:id="@+id/violation_types"
+                android:id="@+id/autoCompleteTextView_violation_types"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -124,7 +126,7 @@
                 android:layout_marginStart="2dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="32dp"
-                android:text="CARD DETAILS: "
+                android:text="Other reasons of violation"
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -133,7 +135,7 @@
         <LinearLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:orientation="horizontal">
+            android:orientation="vertical">
             <TextView
                 android:id="@+id/textView_endTime_title"
                 android:layout_width="wrap_content"
@@ -146,6 +148,14 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 />
+
+            <EditText
+                android:id="@+id/et_citation_reason"
+                android:layout_width="fill_parent"
+                android:layout_height="83dp"
+
+                android:hint="Describe other reasons of the violation"
+                android:text="The vehicle is taking up 2 spaces" /><!--set text in edit text-->
 
         </LinearLayout>
 
@@ -168,12 +178,21 @@
                 android:textAllCaps="false" />
 
             <Button
-                android:id="@+id/btn_purchase_pass"
+                android:id="@+id/btn_notify"
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Purchase"
+                android:layout_marginRight="25px"
+                android:text="Notify"
+                android:textAllCaps="false" />
+            <Button
+                android:id="@+id/btn_create_citation"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Generate Ticket"
                 android:textAllCaps="false" />
 
         </LinearLayout>

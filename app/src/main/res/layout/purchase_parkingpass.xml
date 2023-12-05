@@ -121,13 +121,13 @@
                 android:padding="5dp"
                 android:visibility="invisible" />
             <RadioButton
-                android:id="@+id/radio_pirates"
+                android:id="@+id/radio_oncampus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="On campus" />
 
             <RadioButton
-                android:id="@+id/radio_ninjas"
+                android:id="@+id/radio_offcampus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Off campus" />
