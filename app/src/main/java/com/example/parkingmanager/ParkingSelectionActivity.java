@@ -7,6 +7,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -113,8 +114,77 @@ public class ParkingSelectionActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Handle West Garage row click
                 Toast.makeText(ParkingSelectionActivity.this, "West Garage clicked", Toast.LENGTH_SHORT).show();
+                rearrangeImageViewsForFacility(R.id.imageViewSpot1, R.id.imageViewSpot2, R.id.imageViewSpot3, R.id.imageViewSpot4, R.id.imageViewSpot5);
             }
         });
+
+        TableRow lotDRow = findViewById(R.id.table_row_lot_d);
+        lotDRow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle Lot D row click
+                Toast.makeText(ParkingSelectionActivity.this, "Lot D clicked", Toast.LENGTH_SHORT).show();
+                rearrangeImageViewsForFacility(R.id.imageViewSpot2, R.id.imageViewSpot1, R.id.imageViewSpot3, R.id.imageViewSpot4, R.id.imageViewSpot5);
+            }
+        });
+
+        lotDRow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ParkingSelectionActivity.this, "Lot D clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+        TableRow campusCenterRow = findViewById(R.id.table_row_campus_center_500);
+        campusCenterRow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle Lot D row click
+                Toast.makeText(ParkingSelectionActivity.this, "Lot D clicked", Toast.LENGTH_SHORT).show();
+                rearrangeImageViewsForFacility(R.id.imageViewSpot2, R.id.imageViewSpot1, R.id.imageViewSpot3, R.id.imageViewSpot4, R.id.imageViewSpot5);
+            }
+        });
+
+        campusCenterRow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle West Garage row click
+                Toast.makeText(ParkingSelectionActivity.this, "Campus Center clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        TableRow baysideRow = findViewById(R.id.table_row_bayside);
+        baysideRow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle Lot D row click
+                Toast.makeText(ParkingSelectionActivity.this, "Lot D clicked", Toast.LENGTH_SHORT).show();
+                rearrangeImageViewsForFacility(R.id.imageViewSpot2, R.id.imageViewSpot1, R.id.imageViewSpot3, R.id.imageViewSpot4, R.id.imageViewSpot5);
+            }
+        });
+
+        baysideRow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ParkingSelectionActivity.this, "Bayside", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+    private void rearrangeImageViewsForFacility(int... imageViewIds) {
+        LinearLayout parentLayout = findViewById(R.id.parent_linear_layout); // Replace with the actual ID of the parent LinearLayout
+
+        if (parentLayout != null) {
+            for (int i = 0; i < imageViewIds.length; i++) {
+                ImageView imageView = findViewById(imageViewIds[i]);
+                if (imageView != null) {
+                    parentLayout.removeView(imageView);
+                    parentLayout.addView(imageView);
+                }
+            }
+        } else {
+            Toast.makeText(this, "Parent layout is null", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void navigateToSpotConfirmationActivity(String spotNumber) {
@@ -123,4 +193,5 @@ public class ParkingSelectionActivity extends AppCompatActivity {
         startActivity(intent);
     }
 }
+
 
