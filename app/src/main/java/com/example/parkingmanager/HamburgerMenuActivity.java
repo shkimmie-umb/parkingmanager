@@ -180,7 +180,7 @@ public class HamburgerMenuActivity extends AppCompatActivity {
     }
 
     private void accountControl(String id){
-        if(id.equals("super") || id.equals(null)){
+        if(id.equals("super") || id ==null){
             //Do nothing
         }
         else if(id.equals("admin")){ // parking manager
