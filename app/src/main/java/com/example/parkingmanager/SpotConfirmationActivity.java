@@ -22,7 +22,7 @@ public class SpotConfirmationActivity extends AppCompatActivity {
         home_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SpotConfirmationActivity.this, HamburgerMenuActivity.class);
+                Intent intent = new Intent(SpotConfirmationActivity.this, ParkingSelectionActivity.class);
                 startActivity(intent);
             }
         });

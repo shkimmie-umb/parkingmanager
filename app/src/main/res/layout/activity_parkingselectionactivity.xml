@@ -1,9 +1,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@android:color/white"
+    android:background="@color/light_gray"
     android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="0px"
+        android:background="@color/light_gray">
 
     <TextView
         android:id="@+id/textView_title2"
@@ -24,206 +31,213 @@
         android:paddingTop="10px">
         <LinearLayout
             android:layout_height="wrap_content"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:orientation="vertical">
-    <TableLayout
-        android:id="@+id/table_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="?android:attr/dividerHorizontal"
-        android:showDividers="beginning|middle|end"
-        android:background="@drawable/table_border"
-        >
-        <TableRow
-            android:id="@+id/table_row_header"
-            android:clickable="true"
-            android:onClick="onLotClicked"
-            android:background="@drawable/table_border"
-            >
 
-            <TextView
-                android:id="@+id/Lot_header"
-                android:text="Parking Facility"
-                android:textStyle="bold"
-                android:textColor="@color/black"/>
+            <TableLayout
+                android:id="@+id/table_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/darker_gray"
+                android:divider="?android:attr/dividerHorizontal"
+                android:showDividers="beginning|middle|end">
 
+                <TableRow
+                    android:id="@+id/table_row_header"
+                    android:background="@drawable/table_border"
+                    android:clickable="true"
+                    android:onClick="onLotClicked">
 
-            <TextView
-                android:id="@+id/total_spots"
-                android:text="Total Spots"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:background="@drawable/table_border"/>
-
-            <TextView
-                android:id="@+id/occupied_spots"
-                android:text="Occupied Spots"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:background="@drawable/table_border"/>
-
-            <TextView
-                android:id="@+id/remaining_spots"
-                android:text="Remaining Spots"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:background="@drawable/table_border"/>
-
-            <TextView
-                android:id="@+id/occupancy_rate"
-                android:text="%"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:background="@drawable/table_border"/>
-        </TableRow>
-        <TableRow
-            android:id="@+id/table_row_west_garage"
-            android:clickable="true"
-            android:onClick="onLotClicked"
-            android:background="@drawable/table_border"
-            >
-
-            <TextView
-                android:id="@+id/west_garage_lot_name_text_view"
-                android:text="West Garage"
-                android:textColor="@color/black"/>
+                    <TextView
+                        android:id="@+id/Lot_header"
+                        android:text="Parking Facility"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
 
 
-            <TextView
-                android:id="@+id/west_garage_total_spots"
-                android:text="3000"
-                android:textColor="@color/black"/>
+                    <TextView
+                        android:id="@+id/total_spots"
+                        android:background="@drawable/table_border"
+                        android:text="Total Spots"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/west_garage_occupied_spots"
-                android:text="2138"
-                android:textColor="@color/black"/>
+                    <TextView
+                        android:id="@+id/occupied_spots"
+                        android:background="@drawable/table_border"
+                        android:text="Occupied Spots"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/west_garage_remaining_spots"
-                android:text="862"
-                android:textColor="@color/black"/>
+                    <TextView
+                        android:id="@+id/remaining_spots"
+                        android:background="@drawable/table_border"
+                        android:text="Remaining Spots"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/west_garage_occupancy_rate"
-                android:text="82%"
-                android:textColor="@color/black"
-                android:gravity="left"
-                />
-        </TableRow>
+                    <TextView
+                        android:id="@+id/occupancy_rate"
+                        android:layout_gravity="left"
+                        android:text="%"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+                </TableRow>
 
-        <TableRow
-            android:id="@+id/table_row_lot_d"
-            android:clickable="true"
-            android:onClick="onLotClicked"
-            android:background="@drawable/table_border">
+                <TableRow
+                    android:id="@+id/table_row_west_garage"
+                    android:clickable="true"
+                    android:onClick="onLotClicked"
 
-            <TextView
-                android:id="@+id/lot_d_text_view"
-                android:text="Lot D"
-                android:textColor="@color/black"/>
+                    >
 
-            <TextView
-                android:id="@+id/lot_d_total_spots"
-                android:text="300"
-                android:textColor="@color/black"/>
+                    <TextView
+                        android:id="@+id/west_garage_lot_name_text_view"
+                        android:text="West Garage"
+                        android:textColor="@color/black" />
 
-            <TextView
-                android:id="@+id/lot_d_occupied_spots"
-                android:text="250"
-                android:textColor="@color/black"/>
-            <TextView
-                android:id="@+id/lot_d_remaining_spots"
-                android:text="50"
-                android:textColor="@color/black"/>
-            <TextView
-                android:id="@+id/lot_d_occupancy_rate"
-                android:text="83%"
-                android:textColor="@color/black"
-                android:gravity="left"/>
-        </TableRow>
 
-        <TableRow
-            android:id="@+id/table_row_campus_center_500"
-            android:clickable="true"
-            android:onClick="onLotClicked"
-            android:background="@drawable/table_border"
-            >
+                    <TextView
+                        android:id="@+id/west_garage_total_spots"
+                        android:text="3000"
+                        android:textColor="@color/black" />
 
-            <TextView
-                android:id="@+id/campus_center_text_view"
-                android:text="Campus Center"
-                android:textColor="@color/black"/>
+                    <TextView
+                        android:id="@+id/west_garage_occupied_spots"
+                        android:text="2138"
+                        android:textColor="@color/black" />
 
-            <TextView
-                android:id="@+id/campus_center_total_spots"
-                android:text="500"
-                android:textColor="@color/black"/>
+                    <TextView
+                        android:id="@+id/west_garage_remaining_spots"
+                        android:text="862"
+                        android:textColor="@color/black" />
 
-            <TextView
-                android:id="@+id/campus_center_occupied_spots"
-                android:text="500"
-                android:textColor="@color/black"/>
-            <TextView
-                android:id="@+id/campus_center_remaining_spots"
-                android:text="0"
-                android:textColor="@color/black"/>
-            <TextView
-                android:id="@+id/campus_center_occupancy_rate"
-                android:text="100%"
-                android:textColor="@color/black"
-                android:gravity="left"/>
-        </TableRow>
+                    <TextView
+                        android:id="@+id/west_garage_occupancy_rate"
+                        android:gravity="left"
+                        android:text="82%"
+                        android:textColor="@color/black" />
+                </TableRow>
 
-        <TableRow
-            android:id="@+id/table_row_bayside"
-            android:clickable="true"
-            android:onClick="onLotClicked"
-            android:background="@drawable/table_border">
+                <TableRow
+                    android:id="@+id/table_row_lot_d"
+                    android:clickable="true"
+                    android:onClick="onLotClicked">
 
-            <TextView
-                android:id="@+id/bayside_text_view"
-                android:text="Bayside"
-                android:textColor="@color/black"/>
+                    <TextView
+                        android:id="@+id/lot_d_text_view"
+                        android:text="Lot D"
+                        android:textColor="@color/black" />
 
-            <TextView
-                android:id="@+id/bayside_total_spots"
-                android:text="2300"
-                android:textColor="@color/black"/>
+                    <TextView
+                        android:id="@+id/lot_d_total_spots"
+                        android:text="300"
+                        android:textColor="@color/black" />
 
-            <TextView
-                android:id="@+id/bayside_occupied_spots"
-                android:text="300"
-                android:textColor="@color/black"/>
-            <TextView
-                android:id="@+id/bayside_remaining_spots"
-                android:text="2000"
-                android:textColor="@color/black"/>
-            <TextView
-                android:id="@+id/bayside_occupancy_rate"
-                android:text="13%"
-                android:textColor="@color/black"
-                android:gravity="left"/>
-        </TableRow>
-    </TableLayout>
+                    <TextView
+                        android:id="@+id/lot_d_occupied_spots"
+                        android:text="250"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/lot_d_remaining_spots"
+                        android:text="50"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/lot_d_occupancy_rate"
+                        android:gravity="left"
+                        android:text="83%"
+                        android:textColor="@color/black" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/table_row_campus_center_500"
+                    android:clickable="true"
+                    android:onClick="onLotClicked"
+
+                    >
+
+                    <TextView
+                        android:id="@+id/campus_center_text_view"
+                        android:text="Campus Center"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/campus_center_total_spots"
+                        android:text="500"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/campus_center_occupied_spots"
+                        android:text="500"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/campus_center_remaining_spots"
+                        android:text="0"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/campus_center_occupancy_rate"
+                        android:gravity="left"
+                        android:text="100%"
+                        android:textColor="@color/black" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/table_row_bayside"
+                    android:clickable="true"
+                    android:onClick="onLotClicked">
+
+                    <TextView
+                        android:id="@+id/bayside_text_view"
+                        android:text="Bayside"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/bayside_total_spots"
+                        android:text="2300"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/bayside_occupied_spots"
+                        android:text="300"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/bayside_remaining_spots"
+                        android:text="2000"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/bayside_occupancy_rate"
+                        android:gravity="left"
+                        android:text="13%"
+                        android:textColor="@color/black" />
+                </TableRow>
+            </TableLayout>
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-            <Spinner
-                android:id="@+id/spinner1"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:background="@android:drawable/btn_dropdown"
-                android:spinnerMode="dropdown"
-                android:textColor="@color/black"/>
+
+                <Spinner
+                    android:id="@+id/spinner1"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:drawable/btn_dropdown"
+                    android:spinnerMode="dropdown"
+                    android:textColor="@color/white" />
             </LinearLayout>
 
-
-                <LinearLayout
+            <LinearLayout
                     android:id="@+id/parent_linear_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                >
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -233,37 +247,43 @@
                             android:id="@+id/imageViewSpot1"
                             android:layout_width="10mm"
                             android:layout_height="10mm"
-                            android:src="@drawable/occupied"
-                            android:layout_gravity="left"/>
+                            android:src="@drawable/spot"
+                            android:layout_gravity="left"
+                            android:clickable="false"/>
 
                         <ImageView
                             android:id="@+id/imageViewSpot2"
                             android:layout_width="10mm"
                             android:layout_height="10mm"
-                            android:src="@drawable/available"
-                            android:layout_gravity="center"/>
+                            android:src="@drawable/table_border"
+                            android:layout_gravity="center"
+                            android:background="@android:color/white"/>
 
                         <ImageView
                             android:id="@+id/imageViewSpot3"
                             android:layout_width="10mm"
                             android:layout_height="10mm"
-                            android:src="@drawable/available"
-                            android:layout_gravity="right"/>
+                            android:src="@drawable/table_border"
+                            android:layout_gravity="right"
+                            android:background="@android:color/white"/>
                         <ImageView
                             android:id="@+id/imageViewSpot4"
                             android:layout_width="10mm"
                             android:layout_height="10mm"
-                            android:src="@drawable/available" />
+                            android:src="@drawable/spot"
+                            android:clickable="false"/>
                         <ImageView
                             android:id="@+id/imageViewSpot5"
                             android:layout_width="10mm"
                             android:layout_height="10mm"
-                            android:src="@drawable/available" />
+                            android:src="@drawable/table_border"
+                            android:background="@android:color/white"/>
                         <ImageView
                             android:id="@+id/imageViewSpot6"
                             android:layout_width="10mm"
                             android:layout_height="10mm"
-                            android:src="@drawable/available" />
+                            android:src="@drawable/table_border"
+                            android:background="@android:color/white"/>
                     </LinearLayout>
                     <LinearLayout
                         android:id="@+id/parent_linear_layout1"
@@ -279,14 +299,15 @@
                                 android:id="@+id/imageViewSpot7"
                                 android:layout_width="10mm"
                                 android:layout_height="10mm"
-                                android:src="@drawable/occupied"
-                                android:layout_gravity="left"/>
+                                android:src="@drawable/table_border"
+                                android:layout_gravity="left"
+                                android:background="@android:color/white"/>
 
                             <ImageView
                                 android:id="@+id/imageViewSpot8"
                                 android:layout_width="10mm"
                                 android:layout_height="10mm"
-                                android:src="@drawable/available"
+                                android:src="@drawable/table_border"
                                 android:layout_gravity="center"
                                 android:visibility="invisible"/>
 
@@ -294,14 +315,14 @@
                                 android:id="@+id/imageViewSpot9"
                                 android:layout_width="10mm"
                                 android:layout_height="10mm"
-                                android:src="@drawable/available"
+                                android:src="@drawable/table_border"
                                 android:layout_gravity="right"
                                 android:visibility="invisible"/>
                             <ImageView
                                 android:id="@+id/imageViewSpot10"
                                 android:layout_width="10mm"
                                 android:layout_height="10mm"
-                                android:src="@drawable/available"
+                                android:src="@drawable/table_border"
                                 android:visibility="invisible"/>
                             <ImageView
                                 android:id="@+id/imageViewSpot11"
@@ -313,7 +334,8 @@
                                 android:id="@+id/imageViewSpot12"
                                 android:layout_width="10mm"
                                 android:layout_height="10mm"
-                                android:src="@drawable/available" />
+                                android:src="@drawable/table_border"
+                                android:background="@android:color/white"/>
                         </LinearLayout>
                         <LinearLayout
                             android:id="@+id/parent_linear_layout2"
@@ -329,8 +351,9 @@
                                     android:id="@+id/imageViewSpot13"
                                     android:layout_width="10mm"
                                     android:layout_height="10mm"
-                                    android:src="@drawable/occupied"
-                                    android:layout_gravity="left"/>
+                                    android:src="@drawable/spot"
+                                    android:layout_gravity="left"
+                                    android:clickable="false"/>
 
                                 <ImageView
                                     android:id="@+id/imageViewSpot14"
@@ -363,7 +386,8 @@
                                     android:id="@+id/imageViewSpot18"
                                     android:layout_width="10mm"
                                     android:layout_height="10mm"
-                                    android:src="@drawable/available"
+                                    android:src="@drawable/spot"
+                                    android:clickable="false"
                                     />
                             </LinearLayout>
                             <LinearLayout
@@ -380,8 +404,9 @@
                                         android:id="@+id/imageViewSpot19"
                                         android:layout_width="10mm"
                                         android:layout_height="10mm"
-                                        android:src="@drawable/occupied"
-                                        android:layout_gravity="left"/>
+                                        android:src="@drawable/spot"
+                                        android:layout_gravity="left"
+                                        android:clickable="false"/>
 
                                     <ImageView
                                         android:id="@+id/imageViewSpot20"
@@ -414,7 +439,8 @@
                                         android:id="@+id/imageViewSpot24"
                                         android:layout_width="10mm"
                                         android:layout_height="10mm"
-                                        android:src="@drawable/available" />
+                                        android:src="@drawable/table_border"
+                                        android:background="@android:color/white"/>
                                 </LinearLayout>
                                 <LinearLayout
                                     android:id="@+id/parent_linear_layout4"
@@ -430,8 +456,9 @@
                                             android:id="@+id/imageViewSpot25"
                                             android:layout_width="10mm"
                                             android:layout_height="10mm"
-                                            android:src="@drawable/occupied"
-                                            android:layout_gravity="left"/>
+                                            android:src="@drawable/table_border"
+                                            android:layout_gravity="left"
+                                            android:background="@android:color/white"/>
 
                                         <ImageView
                                             android:id="@+id/imageViewSpot26"
@@ -464,7 +491,8 @@
                                             android:id="@+id/imageViewSpot30"
                                             android:layout_width="10mm"
                                             android:layout_height="10mm"
-                                            android:src="@drawable/available" />
+                                            android:src="@drawable/table_border"
+                                            android:background="@android:color/white"/>
                                     </LinearLayout>
                                     <LinearLayout
                                         android:id="@+id/parent_linear_layout5"
@@ -480,37 +508,43 @@
                                                 android:id="@+id/imageViewSpot31"
                                                 android:layout_width="10mm"
                                                 android:layout_height="10mm"
-                                                android:src="@drawable/occupied"
-                                                android:layout_gravity="left"/>
+                                                android:src="@drawable/spot"
+                                                android:layout_gravity="left"
+                                                android:clickable="false"/>
 
                                             <ImageView
                                                 android:id="@+id/imageViewSpot32"
                                                 android:layout_width="10mm"
                                                 android:layout_height="10mm"
-                                                android:src="@drawable/available"
-                                                android:layout_gravity="center"/>
+                                                android:src="@drawable/table_border"
+                                                android:layout_gravity="center"
+                                                android:background="@android:color/white"/>
 
                                             <ImageView
                                                 android:id="@+id/imageViewSpot33"
                                                 android:layout_width="10mm"
                                                 android:layout_height="10mm"
-                                                android:src="@drawable/available"
-                                                android:layout_gravity="right"/>
+                                                android:src="@drawable/table_border"
+                                                android:layout_gravity="right"
+                                                android:background="@android:color/white"/>
                                             <ImageView
                                                 android:id="@+id/imageViewSpot34"
                                                 android:layout_width="10mm"
                                                 android:layout_height="10mm"
-                                                android:src="@drawable/available" />
+                                                android:src="@drawable/table_border"
+                                                android:background="@android:color/white"/>
                                             <ImageView
                                                 android:id="@+id/imageViewSpot35"
                                                 android:layout_width="10mm"
                                                 android:layout_height="10mm"
-                                                android:src="@drawable/available" />
+                                                android:src="@drawable/table_border"
+                                                android:background="@android:color/white"/>
                                             <ImageView
                                                 android:id="@+id/imageViewSpot36"
                                                 android:layout_width="10mm"
                                                 android:layout_height="10mm"
-                                                android:src="@drawable/available" />
+                                                android:src="@drawable/table_border"
+                                                android:background="@android:color/white"/>
                                         </LinearLayout>
                                     </LinearLayout>
                                 </LinearLayout>
@@ -519,6 +553,7 @@
                     </LinearLayout>
                 </LinearLayout>
         </LinearLayout>
+    </LinearLayout>
     </LinearLayout>
             <Button
                 android:id="@+id/back_btn"
