@@ -37,7 +37,9 @@
         <TableRow
             android:id="@+id/table_row_header"
             android:clickable="true"
-            android:onClick="onLotClicked">
+            android:onClick="onLotClicked"
+            android:background="@drawable/table_border"
+            >
 
             <TextView
                 android:id="@+id/Lot_header"
@@ -50,30 +52,35 @@
                 android:id="@+id/total_spots"
                 android:text="Total Spots"
                 android:textStyle="bold"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:background="@drawable/table_border"/>
 
             <TextView
                 android:id="@+id/occupied_spots"
                 android:text="Occupied Spots"
                 android:textStyle="bold"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:background="@drawable/table_border"/>
 
             <TextView
                 android:id="@+id/remaining_spots"
                 android:text="Remaining Spots"
                 android:textStyle="bold"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:background="@drawable/table_border"/>
 
             <TextView
                 android:id="@+id/occupancy_rate"
                 android:text="%"
                 android:textStyle="bold"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:background="@drawable/table_border"/>
         </TableRow>
         <TableRow
             android:id="@+id/table_row_west_garage"
             android:clickable="true"
             android:onClick="onLotClicked"
+            android:background="@drawable/table_border"
             >
 
             <TextView
@@ -108,7 +115,8 @@
         <TableRow
             android:id="@+id/table_row_lot_d"
             android:clickable="true"
-            android:onClick="onLotClicked">
+            android:onClick="onLotClicked"
+            android:background="@drawable/table_border">
 
             <TextView
                 android:id="@+id/lot_d_text_view"
@@ -139,6 +147,7 @@
             android:id="@+id/table_row_campus_center_500"
             android:clickable="true"
             android:onClick="onLotClicked"
+            android:background="@drawable/table_border"
             >
 
             <TextView
@@ -169,7 +178,8 @@
         <TableRow
             android:id="@+id/table_row_bayside"
             android:clickable="true"
-            android:onClick="onLotClicked">
+            android:onClick="onLotClicked"
+            android:background="@drawable/table_border">
 
             <TextView
                 android:id="@+id/bayside_text_view"
