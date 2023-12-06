@@ -2,6 +2,7 @@ package com.example.parkingmanager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -207,7 +208,7 @@ public class ParkingSelectionActivity extends AppCompatActivity {
 
 
     private void rearrangeImageViewsForFacility(int... imageViewIds) {
-        LinearLayout parentLayout = findViewById(R.id.parent_linear_layout); // Replace with the actual ID of the parent LinearLayout
+        LinearLayout parentLayout = findViewById(R.id.parent_linear_layout);
 
         if (parentLayout != null) {
             for (int i = 0; i < imageViewIds.length; i++) {
@@ -228,6 +229,10 @@ public class ParkingSelectionActivity extends AppCompatActivity {
         intent.putExtra("SPOT_NUMBER", spotNumber);
         intent.putExtra("FACILITY_NAME", facilityName);
         intent.putExtra("SELECTED_CATEGORY", selectedCategory); // Pass the selected floor
+        Log.d("ParkingSelectionActivity", "" + facilityName);
+        Log.d("ParkingSelectionActivity", "Category: " + selectedCategory);
+
+
         startActivity(intent);
     }
 
