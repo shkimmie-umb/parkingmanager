@@ -22,7 +22,9 @@ import java.util.List;
 import java.util.Random;
 
 public class ParkingSelectionActivity extends AppCompatActivity {
-    private String selectedCategory;
+    private String selectedCategory="";
+
+    private String selectedFacilityName="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,9 @@ public class ParkingSelectionActivity extends AppCompatActivity {
         Spinner spinner = findViewById(R.id.spinner1);
 
         TableLayout tableLayout = findViewById(R.id.table_layout);
+
+        selectedFacilityName = "West Garage";
+        selectedCategory = "Floor 1";
 
 // Get the total number of spots for each parking facility
         TextView westGarageTotalSpotsTextView = tableLayout.findViewById(R.id.west_garage_total_spots);
@@ -126,7 +131,7 @@ public class ParkingSelectionActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                String selectedCategory = parentView.getItemAtPosition(position).toString();
+                selectedCategory = parentView.getItemAtPosition(position).toString();
                 // Handle spinner item selection
                 Toast.makeText(ParkingSelectionActivity.this, "Selected Category: " + selectedCategory, Toast.LENGTH_SHORT).show();
             }
@@ -151,7 +156,7 @@ public class ParkingSelectionActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     // Handle ImageView click
-                    navigateToSpotConfirmationActivity(String.valueOf(spotNumber),"","");
+                    navigateToSpotConfirmationActivity(String.valueOf(spotNumber),selectedFacilityName,selectedCategory);
                 }
             });
         }
@@ -162,9 +167,10 @@ public class ParkingSelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Handle West Garage row click
+                selectedFacilityName = "West Garage";
                 Toast.makeText(ParkingSelectionActivity.this, "West Garage clicked", Toast.LENGTH_SHORT).show();
                 rearrangeImageViewsForFacility(R.id.imageViewSpot1, R.id.imageViewSpot2, R.id.imageViewSpot3, R.id.imageViewSpot4, R.id.imageViewSpot5);
-                navigateToSpotConfirmationActivity(String.valueOf(spotNumber), "West Garage", selectedCategory);
+                navigateToSpotConfirmationActivity(String.valueOf(spotNumber), selectedFacilityName, selectedCategory);
             }
         });
 
@@ -173,9 +179,10 @@ public class ParkingSelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Handle Lot D row click
+                selectedCategory = "Lot D";
                 Toast.makeText(ParkingSelectionActivity.this, "Lot D clicked", Toast.LENGTH_SHORT).show();
                 rearrangeImageViewsForFacility(R.id.imageViewSpot2, R.id.imageViewSpot1, R.id.imageViewSpot3, R.id.imageViewSpot4, R.id.imageViewSpot5);
-                navigateToSpotConfirmationActivity(String.valueOf(spotNumber), "Lot D", selectedCategory);
+                navigateToSpotConfirmationActivity(String.valueOf(spotNumber), selectedCategory, selectedCategory);
 
             }
         });
@@ -185,9 +192,10 @@ public class ParkingSelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Handle Lot D row click
+                selectedFacilityName = "Campus Center";
                 Toast.makeText(ParkingSelectionActivity.this, "Campus Center clicked", Toast.LENGTH_SHORT).show();
                 rearrangeImageViewsForFacility(R.id.imageViewSpot2, R.id.imageViewSpot1, R.id.imageViewSpot3, R.id.imageViewSpot4, R.id.imageViewSpot5);
-                navigateToSpotConfirmationActivity(String.valueOf(spotNumber), "Campus Center", selectedCategory);
+                navigateToSpotConfirmationActivity(String.valueOf(spotNumber), selectedFacilityName, selectedCategory);
 
             }
         });
@@ -197,9 +205,10 @@ public class ParkingSelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Handle Lot D row click
+                selectedFacilityName = "Bayside";
                 Toast.makeText(ParkingSelectionActivity.this, "Bayside clicked", Toast.LENGTH_SHORT).show();
                 rearrangeImageViewsForFacility(R.id.imageViewSpot2, R.id.imageViewSpot1, R.id.imageViewSpot3, R.id.imageViewSpot4, R.id.imageViewSpot5);
-                navigateToSpotConfirmationActivity(String.valueOf(spotNumber), "Bayside", selectedCategory);
+                navigateToSpotConfirmationActivity(String.valueOf(spotNumber), selectedFacilityName, selectedCategory);
                 ;
             }
         });
