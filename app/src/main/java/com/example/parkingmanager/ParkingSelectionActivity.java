@@ -22,9 +22,11 @@ import java.util.List;
 import java.util.Random;
 
 public class ParkingSelectionActivity extends AppCompatActivity {
-    private String selectedCategory="";
+    private String selectedCategory = "";
 
-    private String selectedFacilityName="";
+    private String selectedFacilityName = "";
+
+    List<ImageView> spotImageViews;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,14 +132,76 @@ public class ParkingSelectionActivity extends AppCompatActivity {
         spinner.setAdapter(adapter);
 
 
-
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 selectedCategory = parentView.getItemAtPosition(position).toString();
-                // Handle spinner item selection
+                selectedFacilityName = parentView.getItemAtPosition(position).toString();
 
-//                Toast.makeText(ParkingSelectionActivity.this, "Selected Category: " + selectedCategory, Toast.LENGTH_SHORT).show();
+//                for (int i = 1; i <= 36; i++) {
+//
+//                }
+
+                ///////////
+
+//                List<ImageView> spotImageViews = new ArrayList<>();
+//
+//                for (int i = 1; i <= 36; i++) {
+//                    int resId = getResources().getIdentifier("imageViewSpot" + i, "id", getPackageName());
+//
+//                    ImageView spotImageView = (ImageView)findViewById(resId);
+//                    spotImageView.setOnClickListener(null);
+//                    spotImageView.setClickable(false);
+//                    spotImageViews.add(spotImageView);
+//
+//                }
+//
+//                // spotImageViews.size();
+//                for (int i = 0; i < spotImageViews.size(); i++) {
+//                    int spotNumber = i + 1;
+//
+//                    String imgName = String.valueOf(spotImageViews.get(i).getTag());
+//                    spotImageViews.get(i).setOnClickListener(null);
+//
+//                    if((spotNumber != 8 || spotNumber != 9 || spotNumber != 10 || spotNumber != 11
+//                            || spotNumber != 14 || spotNumber != 15 || spotNumber != 16 || spotNumber != 17
+//                            || spotNumber != 20 || spotNumber != 21 || spotNumber != 22 || spotNumber != 23
+//                            || spotNumber != 26 || spotNumber != 27 || spotNumber != 28 || spotNumber != 29)
+//                    ) {
+//                        spotImageViews.get(i).setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View v) {
+//                                // Handle ImageView click
+//                                if(!imgName.equals("spot")){
+//                                    navigateToSpotConfirmationActivity(String.valueOf(spotNumber), selectedFacilityName, selectedCategory);
+//                                }
+//                            }
+//                        });
+//
+//
+//                    }
+//
+//                    if(Math.round( Math.random() ) == 1 ) {
+//                        spotImageViews.get(i).setImageResource(R.drawable.spot);
+//                        spotImageViews.get(i).setOnClickListener(null);
+//                    }
+//                    else if(Math.round( Math.random() ) == 0){
+//                        spotImageViews.get(i).setImageResource(R.drawable.table_border);
+////                        spotImageViews.get(i-1).setOnClickListener(new View.OnClickListener() {
+////                            @Override
+////                            public void onClick(View v) {
+////                                // Handle ImageView click
+////
+////                                navigateToSpotConfirmationActivity(String.valueOf(spotNumber), selectedFacilityName, selectedCategory);
+////                            }
+////                        });
+//
+//                    }
+//                }
+
+                ///////////
+
+
             }
 
             @Override
@@ -146,12 +210,13 @@ public class ParkingSelectionActivity extends AppCompatActivity {
 
         });
 
-        List<ImageView> spotImageViews = new ArrayList<>();
+//        List<ImageView> spotImageViews = new ArrayList<>();
+        spotImageViews = new ArrayList<>();
 
         for (int i = 1; i <= 36; i++) {
             int resId = getResources().getIdentifier("imageViewSpot" + i, "id", getPackageName());
             Log.d("Parking", String.valueOf(resId));
-            ImageView spotImageView = (ImageView)findViewById(resId);
+            ImageView spotImageView = (ImageView) findViewById(resId);
             spotImageViews.add(spotImageView);
             int int_random = new Random().nextInt(1);
 
@@ -171,16 +236,16 @@ public class ParkingSelectionActivity extends AppCompatActivity {
 
             String imgName = String.valueOf(spotImageViews.get(i).getTag());
 
-            if((spotNumber != 8 || spotNumber != 9 || spotNumber != 10 || spotNumber != 11
-            || spotNumber != 14 || spotNumber != 15 || spotNumber != 16 || spotNumber != 17
-            || spotNumber != 20 || spotNumber != 21 || spotNumber != 22 || spotNumber != 23
-            || spotNumber != 26 || spotNumber != 27 || spotNumber != 28 || spotNumber != 29)
+            if ((spotNumber != 8 || spotNumber != 9 || spotNumber != 10 || spotNumber != 11
+                    || spotNumber != 14 || spotNumber != 15 || spotNumber != 16 || spotNumber != 17
+                    || spotNumber != 20 || spotNumber != 21 || spotNumber != 22 || spotNumber != 23
+                    || spotNumber != 26 || spotNumber != 27 || spotNumber != 28 || spotNumber != 29)
             ) {
                 spotImageViews.get(i).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         // Handle ImageView click
-                        if(!imgName.equals("spot")){
+                        if (!imgName.equals("spot")) {
                             navigateToSpotConfirmationActivity(String.valueOf(spotNumber), selectedFacilityName, selectedCategory);
                         }
                     }
@@ -278,7 +343,7 @@ public class ParkingSelectionActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
         for (int i = 1; i <= 36; i++) {
             int resId = getResources().getIdentifier("imageViewSpot" + i, "id", getPackageName());
@@ -286,13 +351,12 @@ public class ParkingSelectionActivity extends AppCompatActivity {
 //            spotImageViews.add(spotImageView);
 
 
-            if(Math.round( Math.random() ) == 1 ) {
+            if (Math.round(Math.random()) == 1) {
                 spotImageView.setImageResource(R.drawable.spot);
                 spotImageView.setClickable(false);
                 spotImageView.setOnClickListener(null);
 
-            }
-            else if(Math.round( Math.random() ) == 0){
+            } else if (Math.round(Math.random()) == 0) {
                 spotImageView.setImageResource(R.drawable.table_border);
 
             }
@@ -300,6 +364,7 @@ public class ParkingSelectionActivity extends AppCompatActivity {
     }
 
     private int spotNumber;
+
     private void navigateToSpotConfirmationActivity(String spotNumber, String facilityName, String selectedCategory) {
         Intent intent = new Intent(this, SpotConfirmationActivity.class);
         intent.putExtra("SPOT_NUMBER", spotNumber);

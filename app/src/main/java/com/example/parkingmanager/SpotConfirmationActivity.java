@@ -72,7 +72,7 @@ public class SpotConfirmationActivity extends AppCompatActivity {
             Log.d("SpotConfirmationActivity", "Selected Category: " + selectedCategory);
             // Update the floor number TextView
             TextView floorNumberTextView = findViewById(R.id.textView_floor_num);
-            floorNumberTextView.setText("Floor: " + selectedCategory);
+//            floorNumberTextView.setText("Floor: " + selectedCategory);
         }
     }
 }
