@@ -227,7 +227,7 @@ public class ParkingSelectionActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SpotConfirmationActivity.class);
         intent.putExtra("SPOT_NUMBER", spotNumber);
         intent.putExtra("FACILITY_NAME", facilityName);
-        intent.putExtra("SELECTED_FLOOR", selectedCategory); // Pass the selected floor
+        intent.putExtra("SELECTED_CATEGORY", selectedCategory); // Pass the selected floor
         startActivity(intent);
     }
 

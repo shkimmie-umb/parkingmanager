@@ -2,6 +2,7 @@ package com.example.parkingmanager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -18,7 +19,6 @@ public class SpotConfirmationActivity extends AppCompatActivity {
 
         Button home_Btn = findViewById(R.id.home_btn);
 
-
         home_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -32,20 +32,22 @@ public class SpotConfirmationActivity extends AppCompatActivity {
         if (intent != null && intent.hasExtra("SPOT_NUMBER") && intent.hasExtra("FACILITY_NAME")) {
             String spotNumber = intent.getStringExtra("SPOT_NUMBER");
             String facilityName = intent.getStringExtra("FACILITY_NAME");
+            Log.d("SpotConfirmationActivity", "Facility Name: " + facilityName);
+            intent.putExtra("SPOT_NUMBER", spotNumber);
+            intent.putExtra("FACILITY_NAME", facilityName);
+//            intent.putExtra("SELECTED_CATEGORY", selectedCategory);
 
             // Display the facility name and spot number
             TextView titleTextView = findViewById(R.id.textView_title2);
-            titleTextView.setText("YOU'VE PARKED AT " + facilityName + ":");
+            titleTextView.setText("YOU'VE PARKED AT: " + facilityName);
 
             TextView spotNumberTextView = findViewById(R.id.textView_spot_num);
             spotNumberTextView.setText("#" + spotNumber);
-
-            TextView floorNumberTextView = findViewById(R.id.textView_floor_num);
-            floorNumberTextView.setText("Floor:" +floorNumberTextView);
         }
-        if (intent != null && intent.hasExtra("SELECTED_CATEGORY")) {
-            String selectedCategory = intent.getStringExtra("SELECTED_CATEGORY");
 
+        if (intent.hasExtra("SELECTED_CATEGORY")) {
+            String selectedCategory = intent.getStringExtra("SELECTED_CATEGORY");
+            Log.d("SpotConfirmationActivity", "Selected Category: " + selectedCategory);
             // Update the floor number TextView
             TextView floorNumberTextView = findViewById(R.id.textView_floor_num);
             floorNumberTextView.setText("Floor: " + selectedCategory);
