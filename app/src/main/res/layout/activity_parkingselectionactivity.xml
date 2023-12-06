@@ -1,5 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/light_gray"
@@ -7,7 +7,7 @@
 
     <LinearLayout
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:orientation="vertical"
         android:paddingTop="0px"
         android:background="@color/light_gray">
@@ -26,17 +26,17 @@
 
     <LinearLayout
         android:layout_height="wrap_content"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:orientation="horizontal"
         android:paddingTop="10px">
         <LinearLayout
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:orientation="vertical">
 
             <TableLayout
                 android:id="@+id/table_layout"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/darker_gray"
                 android:divider="?android:attr/dividerHorizontal"
@@ -59,26 +59,30 @@
                         android:id="@+id/total_spots"
                         android:background="@drawable/table_border"
                         android:text="Total Spots"
+                        android:gravity="center_horizontal"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/occupied_spots"
                         android:background="@drawable/table_border"
-                        android:text="Occupied Spots"
+                        android:text="Available spots"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/remaining_spots"
+                        android:layout_width="fill_parent"
+                        android:layout_gravity="center_horizontal"
                         android:background="@drawable/table_border"
-                        android:text="Remaining Spots"
+                        android:text="Remaining"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/occupancy_rate"
-                        android:layout_gravity="left"
+                        android:gravity="center_horizontal"
+
                         android:text="%"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
@@ -94,27 +98,31 @@
                     <TextView
                         android:id="@+id/west_garage_lot_name_text_view"
                         android:text="West Garage"
+                        android:layout_gravity="center_horizontal"
                         android:textColor="@color/black" />
 
 
                     <TextView
                         android:id="@+id/west_garage_total_spots"
                         android:text="3000"
+                        android:gravity="center_horizontal"
                         android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/west_garage_occupied_spots"
+                        android:layout_gravity="center_horizontal"
                         android:text="2138"
                         android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/west_garage_remaining_spots"
+                        android:gravity="center_horizontal"
                         android:text="862"
                         android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/west_garage_occupancy_rate"
-                        android:gravity="left"
+                        android:gravity="center_horizontal"
                         android:text="82%"
                         android:textColor="@color/black" />
                 </TableRow>
@@ -126,27 +134,31 @@
 
                     <TextView
                         android:id="@+id/lot_d_text_view"
+                        android:gravity="center_horizontal"
                         android:text="Lot D"
                         android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/lot_d_total_spots"
+                        android:gravity="center_horizontal"
                         android:text="300"
                         android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/lot_d_occupied_spots"
+                        android:gravity="center_horizontal"
                         android:text="250"
                         android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/lot_d_remaining_spots"
+                        android:gravity="center_horizontal"
                         android:text="50"
                         android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/lot_d_occupancy_rate"
-                        android:gravity="left"
+                        android:gravity="center_horizontal"
                         android:text="83%"
                         android:textColor="@color/black" />
                 </TableRow>
@@ -160,27 +172,31 @@
 
                     <TextView
                         android:id="@+id/campus_center_text_view"
+                        android:gravity="center_horizontal"
                         android:text="Campus Center"
                         android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/campus_center_total_spots"
+                        android:gravity="center_horizontal"
                         android:text="500"
                         android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/campus_center_occupied_spots"
+                        android:gravity="center_horizontal"
                         android:text="500"
                         android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/campus_center_remaining_spots"
+                        android:gravity="center_horizontal"
                         android:text="0"
                         android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/campus_center_occupancy_rate"
-                        android:gravity="left"
+                        android:gravity="center_horizontal"
                         android:text="100%"
                         android:textColor="@color/black" />
                 </TableRow>
@@ -192,27 +208,31 @@
 
                     <TextView
                         android:id="@+id/bayside_text_view"
+                        android:gravity="center_horizontal"
                         android:text="Bayside"
                         android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/bayside_total_spots"
+                        android:gravity="center_horizontal"
                         android:text="2300"
                         android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/bayside_occupied_spots"
+                        android:gravity="center_horizontal"
                         android:text="300"
                         android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/bayside_remaining_spots"
+                        android:gravity="center_horizontal"
                         android:text="2000"
                         android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/bayside_occupancy_rate"
-                        android:gravity="left"
+                        android:gravity="center_horizontal"
                         android:text="13%"
                         android:textColor="@color/black" />
                 </TableRow>
