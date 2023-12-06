@@ -27,13 +27,12 @@
         <item>Violation</item>
     </string-array>
     <string-array name="parking_categories">
-        <item>Floor 1</item>
-        <item>Floor 2</item>
-        <item>Floor 3</item>
-        <item>Floor 4</item>
-        <item>Floor 5</item>
-        <item>Floor 6</item>
-        <item>Floor 7</item>
-        <item>Floor 8</item>
+        <item>WestGarage F1</item>
+        <item>WestGarage F2</item>
+        <item>WestGarage F3</item>
+        <item>WestGarage F4</item>
+        <item>Lot D</item>
+        <item>Campus Center</item>
+        <item>Bayside</item>
     </string-array>
 </resources>

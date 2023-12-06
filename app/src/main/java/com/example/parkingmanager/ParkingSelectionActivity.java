@@ -122,10 +122,13 @@ public class ParkingSelectionActivity extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this,
                 R.array.parking_categories,
-                android.R.layout.simple_spinner_item
+                R.layout.spinner_list
+//                android.R.layout.simple_spinner_item
         );
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(R.layout.spinner_list);
         spinner.setAdapter(adapter);
+
 
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -133,7 +136,8 @@ public class ParkingSelectionActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 selectedCategory = parentView.getItemAtPosition(position).toString();
                 // Handle spinner item selection
-                Toast.makeText(ParkingSelectionActivity.this, "Selected Category: " + selectedCategory, Toast.LENGTH_SHORT).show();
+
+//                Toast.makeText(ParkingSelectionActivity.this, "Selected Category: " + selectedCategory, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -146,72 +150,113 @@ public class ParkingSelectionActivity extends AppCompatActivity {
 
         for (int i = 1; i <= 36; i++) {
             int resId = getResources().getIdentifier("imageViewSpot" + i, "id", getPackageName());
-            ImageView spotImageView = findViewById(resId);
+            Log.d("Parking", String.valueOf(resId));
+            ImageView spotImageView = (ImageView)findViewById(resId);
             spotImageViews.add(spotImageView);
+            int int_random = new Random().nextInt(1);
+
+//            if(Math.round( Math.random() ) == 1 ) {
+//                spotImageView.setImageResource(R.drawable.spot);
+//
+//            }
+//            else if(Math.round( Math.random() ) == 0){
+//                spotImageView.setImageResource(R.drawable.table_border);
+//                spotImageView.setOnClickListener(null);
+//            }
         }
 
+        // spotImageViews.size();
         for (int i = 0; i < spotImageViews.size(); i++) {
-            final int spotNumber = i + 1;
-            spotImageViews.get(i).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // Handle ImageView click
-                    navigateToSpotConfirmationActivity(String.valueOf(spotNumber),selectedFacilityName,selectedCategory);
-                }
-            });
+            int spotNumber = i + 1;
+
+            String imgName = String.valueOf(spotImageViews.get(i).getTag());
+
+            if((spotNumber != 8 || spotNumber != 9 || spotNumber != 10 || spotNumber != 11
+            || spotNumber != 14 || spotNumber != 15 || spotNumber != 16 || spotNumber != 17
+            || spotNumber != 20 || spotNumber != 21 || spotNumber != 22 || spotNumber != 23
+            || spotNumber != 26 || spotNumber != 27 || spotNumber != 28 || spotNumber != 29)
+            ) {
+                spotImageViews.get(i).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Handle ImageView click
+                        if(!imgName.equals("spot")){
+                            navigateToSpotConfirmationActivity(String.valueOf(spotNumber), selectedFacilityName, selectedCategory);
+                        }
+                    }
+                });
+            }
         }
 
+//        for (int i = 1; i <= 36; i++) {
+//            int resId = getResources().getIdentifier("imageViewSpot" + i, "id", getPackageName());
+//            ImageView spotImageView = findViewById(resId);
+////            spotImageViews.add(spotImageView);
+//
+//
+//            if(Math.round( Math.random() ) == 1 ) {
+//                spotImageView.setImageResource(R.drawable.spot);
+//                spotImageView.setClickable(false);
+//                spotImageView.setOnClickListener(null);
+//
+//            }
+//            else if(Math.round( Math.random() ) == 0){
+//                spotImageView.setImageResource(R.drawable.table_border);
+//
+//            }
+//        }
 
-        TableRow westGarageRow = findViewById(R.id.table_row_west_garage);
-        westGarageRow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle West Garage row click
-                selectedFacilityName = "West Garage";
-                Toast.makeText(ParkingSelectionActivity.this, "West Garage clicked", Toast.LENGTH_SHORT).show();
-                rearrangeImageViewsForFacility(R.id.imageViewSpot1, R.id.imageViewSpot2, R.id.imageViewSpot3, R.id.imageViewSpot4, R.id.imageViewSpot5);
-                navigateToSpotConfirmationActivity(String.valueOf(spotNumber), selectedFacilityName, selectedCategory);
-            }
-        });
 
-        TableRow lotDRow = findViewById(R.id.table_row_lot_d);
-        lotDRow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle Lot D row click
-                selectedCategory = "Lot D";
-                Toast.makeText(ParkingSelectionActivity.this, "Lot D clicked", Toast.LENGTH_SHORT).show();
-                rearrangeImageViewsForFacility(R.id.imageViewSpot2, R.id.imageViewSpot1, R.id.imageViewSpot3, R.id.imageViewSpot4, R.id.imageViewSpot5);
-                navigateToSpotConfirmationActivity(String.valueOf(spotNumber), selectedCategory, selectedCategory);
-
-            }
-        });
-
-        TableRow campusCenterRow = findViewById(R.id.table_row_campus_center_500);
-        campusCenterRow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle Lot D row click
-                selectedFacilityName = "Campus Center";
-                Toast.makeText(ParkingSelectionActivity.this, "Campus Center clicked", Toast.LENGTH_SHORT).show();
-                rearrangeImageViewsForFacility(R.id.imageViewSpot2, R.id.imageViewSpot1, R.id.imageViewSpot3, R.id.imageViewSpot4, R.id.imageViewSpot5);
-                navigateToSpotConfirmationActivity(String.valueOf(spotNumber), selectedFacilityName, selectedCategory);
-
-            }
-        });
-
-        TableRow baysideRow = findViewById(R.id.table_row_bayside);
-        baysideRow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle Lot D row click
-                selectedFacilityName = "Bayside";
-                Toast.makeText(ParkingSelectionActivity.this, "Bayside clicked", Toast.LENGTH_SHORT).show();
-                rearrangeImageViewsForFacility(R.id.imageViewSpot2, R.id.imageViewSpot1, R.id.imageViewSpot3, R.id.imageViewSpot4, R.id.imageViewSpot5);
-                navigateToSpotConfirmationActivity(String.valueOf(spotNumber), selectedFacilityName, selectedCategory);
-                ;
-            }
-        });
+//        TableRow westGarageRow = findViewById(R.id.table_row_west_garage);
+//        westGarageRow.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Handle West Garage row click
+//                selectedFacilityName = "West Garage";
+//                Toast.makeText(ParkingSelectionActivity.this, "West Garage clicked", Toast.LENGTH_SHORT).show();
+////                rearrangeImageViewsForFacility(R.id.imageViewSpot1, R.id.imageViewSpot2, R.id.imageViewSpot3, R.id.imageViewSpot4, R.id.imageViewSpot5);
+//                navigateToSpotConfirmationActivity(String.valueOf(spotNumber), selectedFacilityName, selectedCategory);
+//            }
+//        });
+//
+//        TableRow lotDRow = findViewById(R.id.table_row_lot_d);
+//        lotDRow.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Handle Lot D row click
+//                selectedCategory = "Lot D";
+//                Toast.makeText(ParkingSelectionActivity.this, "Lot D clicked", Toast.LENGTH_SHORT).show();
+////                rearrangeImageViewsForFacility(R.id.imageViewSpot2, R.id.imageViewSpot1, R.id.imageViewSpot3, R.id.imageViewSpot4, R.id.imageViewSpot5);
+//                navigateToSpotConfirmationActivity(String.valueOf(spotNumber), selectedCategory, selectedCategory);
+//
+//            }
+//        });
+//
+//        TableRow campusCenterRow = findViewById(R.id.table_row_campus_center_500);
+//        campusCenterRow.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Handle Lot D row click
+//                selectedFacilityName = "Campus Center";
+//                Toast.makeText(ParkingSelectionActivity.this, "Campus Center clicked", Toast.LENGTH_SHORT).show();
+////                rearrangeImageViewsForFacility(R.id.imageViewSpot2, R.id.imageViewSpot1, R.id.imageViewSpot3, R.id.imageViewSpot4, R.id.imageViewSpot5);
+//                navigateToSpotConfirmationActivity(String.valueOf(spotNumber), selectedFacilityName, selectedCategory);
+//
+//            }
+//        });
+//
+//        TableRow baysideRow = findViewById(R.id.table_row_bayside);
+//        baysideRow.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Handle Lot D row click
+//                selectedFacilityName = "Bayside";
+////                Toast.makeText(ParkingSelectionActivity.this, "Bayside clicked", Toast.LENGTH_SHORT).show();
+////                rearrangeImageViewsForFacility(R.id.imageViewSpot2, R.id.imageViewSpot1, R.id.imageViewSpot3, R.id.imageViewSpot4, R.id.imageViewSpot5);
+//                navigateToSpotConfirmationActivity(String.valueOf(spotNumber), selectedFacilityName, selectedCategory);
+//                ;
+//            }
+//        });
 
     }
 
@@ -229,6 +274,28 @@ public class ParkingSelectionActivity extends AppCompatActivity {
             }
         } else {
             Toast.makeText(this, "Parent layout is null", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        for (int i = 1; i <= 36; i++) {
+            int resId = getResources().getIdentifier("imageViewSpot" + i, "id", getPackageName());
+            ImageView spotImageView = findViewById(resId);
+//            spotImageViews.add(spotImageView);
+
+
+            if(Math.round( Math.random() ) == 1 ) {
+                spotImageView.setImageResource(R.drawable.spot);
+                spotImageView.setClickable(false);
+                spotImageView.setOnClickListener(null);
+
+            }
+            else if(Math.round( Math.random() ) == 0){
+                spotImageView.setImageResource(R.drawable.table_border);
+
+            }
         }
     }
 

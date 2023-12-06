@@ -5,13 +5,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SpotConfirmationActivity extends AppCompatActivity {
-
+    String spotNumber;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +20,10 @@ public class SpotConfirmationActivity extends AppCompatActivity {
 
         Button home_Btn = findViewById(R.id.home_btn);
         Button payment_Btn = findViewById(R.id.payment_btn);
+
+
+
+
 
 
         payment_Btn.setOnClickListener(new View.OnClickListener() {
@@ -39,7 +44,7 @@ public class SpotConfirmationActivity extends AppCompatActivity {
         // Get the spot number from the Intent
         Intent intent = getIntent();
         if (intent != null && intent.hasExtra("SPOT_NUMBER") && intent.hasExtra("FACILITY_NAME")) {
-            String spotNumber = intent.getStringExtra("SPOT_NUMBER");
+            spotNumber = intent.getStringExtra("SPOT_NUMBER");
             String facilityName = intent.getStringExtra("FACILITY_NAME");
             Log.d("SpotConfirmationActivity", "Facility Name: " + facilityName);
             intent.putExtra("SPOT_NUMBER", spotNumber);
@@ -52,6 +57,14 @@ public class SpotConfirmationActivity extends AppCompatActivity {
 
             TextView spotNumberTextView = findViewById(R.id.textView_spot_num);
             spotNumberTextView.setText("#" + spotNumber);
+
+
+//            int resId = getResources().getIdentifier("imageViewSpot" + spotNumber, "id", getPackageName());
+//            ImageView spotImageView = (ImageView)findViewById(resId);
+//            String imgName = String.valueOf(spotImageView.getTag());
+//            if(imgName.equals("spot"))
+//                payment_Btn.setEnabled(false);
+
         }
 
         if (intent.hasExtra("SELECTED_CATEGORY")) {
