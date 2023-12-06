@@ -49,6 +49,15 @@
             android:textStyle="bold" />
 
         <Button
+            android:id="@+id/payment_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="50px"
+            android:text="Complete Payment"
+            android:textAllCaps="false" />
+
+        <Button
             android:id="@+id/home_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,5 +65,7 @@
             android:layout_marginRight="50px"
             android:text="Back"
             android:textAllCaps="false" />
+
+
     </LinearLayout>
 </LinearLayout>

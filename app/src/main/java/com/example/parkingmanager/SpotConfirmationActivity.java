@@ -18,7 +18,16 @@ public class SpotConfirmationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_spotconfirmation);
 
         Button home_Btn = findViewById(R.id.home_btn);
+        Button payment_Btn = findViewById(R.id.payment_btn);
 
+
+        payment_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SpotConfirmationActivity.this, ParkingPassPurchaseActivity.class);
+                startActivity(intent);
+            }
+        });
         home_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
