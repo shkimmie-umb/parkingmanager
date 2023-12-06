@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +17,8 @@ public class SpotConfirmationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_spotconfirmation);
 
         Button home_Btn = findViewById(R.id.home_btn);
+
+
         home_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -24,20 +27,28 @@ public class SpotConfirmationActivity extends AppCompatActivity {
             }
         });
 
-        // Find views by their IDs
-        TextView titleTextView = findViewById(R.id.textView_title2);
-        TextView spotNumberTextView = findViewById(R.id.textView_spot_num);
-        TextView floorNumberTextView = findViewById(R.id.textView_floor_num);
-
-        titleTextView.setText("YOU'VE PARKED AT:");
-
         // Get the spot number from the Intent
         Intent intent = getIntent();
-        if (intent != null && intent.hasExtra("SPOT_NUMBER")) {
+        if (intent != null && intent.hasExtra("SPOT_NUMBER") && intent.hasExtra("FACILITY_NAME")) {
             String spotNumber = intent.getStringExtra("SPOT_NUMBER");
+            String facilityName = intent.getStringExtra("FACILITY_NAME");
+
+            // Display the facility name and spot number
+            TextView titleTextView = findViewById(R.id.textView_title2);
+            titleTextView.setText("YOU'VE PARKED AT " + facilityName + ":");
+
+            TextView spotNumberTextView = findViewById(R.id.textView_spot_num);
             spotNumberTextView.setText("#" + spotNumber);
-            // You can set the floor number based on your logic or data source
-            floorNumberTextView.setText("Floor: B2"); // Replace with actual floor logic
+
+            TextView floorNumberTextView = findViewById(R.id.textView_floor_num);
+            floorNumberTextView.setText("Floor:" +floorNumberTextView);
+        }
+        if (intent != null && intent.hasExtra("SELECTED_CATEGORY")) {
+            String selectedCategory = intent.getStringExtra("SELECTED_CATEGORY");
+
+            // Update the floor number TextView
+            TextView floorNumberTextView = findViewById(R.id.textView_floor_num);
+            floorNumberTextView.setText("Floor: " + selectedCategory);
         }
     }
 }

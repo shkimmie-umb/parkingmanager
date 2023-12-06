@@ -9,14 +9,19 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ParkingSelectionActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
+public class ParkingSelectionActivity extends AppCompatActivity {
+    private String selectedCategory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +31,74 @@ public class ParkingSelectionActivity extends AppCompatActivity {
         // Find views by their IDs
         TextView titleTextView = findViewById(R.id.textView_title2);
         Spinner spinner = findViewById(R.id.spinner1);
-        ImageView imageViewSpot1 = findViewById(R.id.imageViewSpot1);
-        ImageView imageViewSpot2 = findViewById(R.id.imageViewSpot2);
-        ImageView imageViewSpot3 = findViewById(R.id.imageViewSpot3);
-        ImageView imageViewSpot4 = findViewById(R.id.imageViewSpot4);
-        ImageView imageViewSpot5 = findViewById(R.id.imageViewSpot5);
+
+        TableLayout tableLayout = findViewById(R.id.table_layout);
+
+// Get the total number of spots for each parking facility
+        TextView westGarageTotalSpotsTextView = tableLayout.findViewById(R.id.west_garage_total_spots);
+        String westGarageTotalSpotsString = westGarageTotalSpotsTextView.getText().toString();
+        int westGarageTotalSpots = Integer.parseInt(westGarageTotalSpotsString);
+
+        TextView lotDTotalSpotsTextView = tableLayout.findViewById(R.id.lot_d_total_spots);
+        String lotDTotalSpotsString = lotDTotalSpotsTextView.getText().toString();
+        int lotDTotalSpots = Integer.parseInt(lotDTotalSpotsString);
+
+        TextView campusCenterTotalSpotsTextView = tableLayout.findViewById(R.id.campus_center_total_spots);
+        String campusCenterTotalSpotsString = campusCenterTotalSpotsTextView.getText().toString();
+        int campusCenterTotalSpots = Integer.parseInt(campusCenterTotalSpotsString);
+
+        TextView baysideTotalSpotsTextView = tableLayout.findViewById(R.id.bayside_total_spots);
+        String baysideTotalSpotsString = baysideTotalSpotsTextView.getText().toString();
+        int baysideTotalSpots = Integer.parseInt(baysideTotalSpotsString);
+
+// Generate a random number for 'Occupied Spots' in each row
+        int westGarageOccupiedSpots = new Random().nextInt(westGarageTotalSpots);
+        int lotDOccupiedSpots = new Random().nextInt(lotDTotalSpots);
+        int campusCenterOccupiedSpots = new Random().nextInt(campusCenterTotalSpots);
+        int baysideOccupiedSpots = new Random().nextInt(baysideTotalSpots);
+
+// Calculate the remaining spots and occupancy rate for each row
+        int westGarageRemainingSpots = westGarageTotalSpots - westGarageOccupiedSpots;
+        float westGarageOccupancyRate = (float) westGarageOccupiedSpots / westGarageTotalSpots * 100;
+
+        int lotDRemainingSpots = lotDTotalSpots - lotDOccupiedSpots;
+        float lotDOccupancyRate = (float) lotDOccupiedSpots / lotDTotalSpots * 100;
+
+        int campusCenterRemainingSpots = campusCenterTotalSpots - campusCenterOccupiedSpots;
+        float campusCenterOccupancyRate = (float) campusCenterOccupiedSpots / campusCenterTotalSpots * 100;
+
+        int baysideRemainingSpots = baysideTotalSpots - baysideOccupiedSpots;
+        float baysideOccupancyRate = (float) baysideOccupiedSpots / baysideTotalSpots * 100;
+
+// Update the remaining spots and occupancy rate for each row
+        TextView westGarageOccupiedSpotsTextView = tableLayout.findViewById(R.id.west_garage_occupied_spots);
+        westGarageOccupiedSpotsTextView.setText(String.valueOf(westGarageOccupiedSpots));
+
+        TextView westGarageRemainingSpotsTextView = tableLayout.findViewById(R.id.west_garage_remaining_spots);
+        westGarageRemainingSpotsTextView.setText(String.valueOf(westGarageRemainingSpots));
+
+        TextView westGarageOccupancyRateTextView = tableLayout.findViewById(R.id.west_garage_occupancy_rate);
+        westGarageOccupancyRateTextView.setText(String.format("%.2f%%", westGarageOccupancyRate));
+
+        TextView lotDOccupiedSpotsTextView = tableLayout.findViewById(R.id.lot_d_occupied_spots);
+        lotDOccupiedSpotsTextView.setText(String.valueOf(lotDOccupiedSpots));
+
+        TextView lotDRemainingSpotsTextView = tableLayout.findViewById(R.id.lot_d_remaining_spots);
+        lotDRemainingSpotsTextView.setText(String.valueOf(lotDRemainingSpots));
+
+        TextView lotDOccupancyRateTextView = tableLayout.findViewById(R.id.lot_d_occupancy_rate);
+        lotDOccupancyRateTextView.setText(String.format("%.2f%%", lotDOccupancyRate));
+
+        TextView campusCenterOccupiedSpotsTextView = tableLayout.findViewById(R.id.campus_center_occupied_spots);
+        campusCenterOccupiedSpotsTextView.setText(String.valueOf(campusCenterOccupiedSpots));
+
+        TextView campusCenterRemainingSpotsTextView = tableLayout.findViewById(R.id.campus_center_remaining_spots);
+        campusCenterRemainingSpotsTextView.setText(String.valueOf(campusCenterRemainingSpots));
+
+        TextView campusCenterOccupancyRateTextView = tableLayout.findViewById(R.id.campus_center_occupancy_rate);
+        campusCenterOccupancyRateTextView.setText(String.format("%.2f%%", campusCenterOccupancyRate));
+
+        TextView baysideOccupiedSpotsTextView = tableLayout.findViewById(R.id.bayside_occupied_spots);
 
         Button backBtn = findViewById(R.id.back_btn);
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -68,45 +136,25 @@ public class ParkingSelectionActivity extends AppCompatActivity {
 
         });
 
-        imageViewSpot1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle ImageView click
-                navigateToSpotConfirmationActivity("1"); // Pass the spot number
-            }
-        });
+        List<ImageView> spotImageViews = new ArrayList<>();
 
-        imageViewSpot2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle ImageView click
-                navigateToSpotConfirmationActivity("2"); // Pass the spot number
-            }
-        });
+        for (int i = 1; i <= 36; i++) {
+            int resId = getResources().getIdentifier("imageViewSpot" + i, "id", getPackageName());
+            ImageView spotImageView = findViewById(resId);
+            spotImageViews.add(spotImageView);
+        }
 
-        imageViewSpot3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle ImageView click
-                navigateToSpotConfirmationActivity("3"); // Pass the spot number
-            }
-        });
+        for (int i = 0; i < spotImageViews.size(); i++) {
+            final int spotNumber = i + 1;
+            spotImageViews.get(i).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Handle ImageView click
+                    navigateToSpotConfirmationActivity(String.valueOf(spotNumber),"","");
+                }
+            });
+        }
 
-        imageViewSpot4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle ImageView click
-                navigateToSpotConfirmationActivity("4"); // Pass the spot number
-            }
-        });
-
-        imageViewSpot5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle ImageView click
-                navigateToSpotConfirmationActivity("5");
-            }
-        });
 
         TableRow westGarageRow = findViewById(R.id.table_row_west_garage);
         westGarageRow.setOnClickListener(new View.OnClickListener() {
@@ -115,6 +163,7 @@ public class ParkingSelectionActivity extends AppCompatActivity {
                 // Handle West Garage row click
                 Toast.makeText(ParkingSelectionActivity.this, "West Garage clicked", Toast.LENGTH_SHORT).show();
                 rearrangeImageViewsForFacility(R.id.imageViewSpot1, R.id.imageViewSpot2, R.id.imageViewSpot3, R.id.imageViewSpot4, R.id.imageViewSpot5);
+                navigateToSpotConfirmationActivity(String.valueOf(spotNumber), "West Garage", selectedCategory);
             }
         });
 
@@ -125,30 +174,20 @@ public class ParkingSelectionActivity extends AppCompatActivity {
                 // Handle Lot D row click
                 Toast.makeText(ParkingSelectionActivity.this, "Lot D clicked", Toast.LENGTH_SHORT).show();
                 rearrangeImageViewsForFacility(R.id.imageViewSpot2, R.id.imageViewSpot1, R.id.imageViewSpot3, R.id.imageViewSpot4, R.id.imageViewSpot5);
+                navigateToSpotConfirmationActivity(String.valueOf(spotNumber), "Lot D", selectedCategory);
+
             }
         });
 
-        lotDRow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(ParkingSelectionActivity.this, "Lot D clicked", Toast.LENGTH_SHORT).show();
-            }
-        });
         TableRow campusCenterRow = findViewById(R.id.table_row_campus_center_500);
         campusCenterRow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Handle Lot D row click
-                Toast.makeText(ParkingSelectionActivity.this, "Lot D clicked", Toast.LENGTH_SHORT).show();
-                rearrangeImageViewsForFacility(R.id.imageViewSpot2, R.id.imageViewSpot1, R.id.imageViewSpot3, R.id.imageViewSpot4, R.id.imageViewSpot5);
-            }
-        });
-
-        campusCenterRow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle West Garage row click
                 Toast.makeText(ParkingSelectionActivity.this, "Campus Center clicked", Toast.LENGTH_SHORT).show();
+                rearrangeImageViewsForFacility(R.id.imageViewSpot2, R.id.imageViewSpot1, R.id.imageViewSpot3, R.id.imageViewSpot4, R.id.imageViewSpot5);
+                navigateToSpotConfirmationActivity(String.valueOf(spotNumber), "Campus Center", selectedCategory);
+
             }
         });
 
@@ -157,17 +196,13 @@ public class ParkingSelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Handle Lot D row click
-                Toast.makeText(ParkingSelectionActivity.this, "Lot D clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ParkingSelectionActivity.this, "Bayside clicked", Toast.LENGTH_SHORT).show();
                 rearrangeImageViewsForFacility(R.id.imageViewSpot2, R.id.imageViewSpot1, R.id.imageViewSpot3, R.id.imageViewSpot4, R.id.imageViewSpot5);
+                navigateToSpotConfirmationActivity(String.valueOf(spotNumber), "Bayside", selectedCategory);
+                ;
             }
         });
 
-        baysideRow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(ParkingSelectionActivity.this, "Bayside", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
 
@@ -187,11 +222,13 @@ public class ParkingSelectionActivity extends AppCompatActivity {
         }
     }
 
-    private void navigateToSpotConfirmationActivity(String spotNumber) {
+    private int spotNumber;
+    private void navigateToSpotConfirmationActivity(String spotNumber, String facilityName, String selectedCategory) {
         Intent intent = new Intent(this, SpotConfirmationActivity.class);
         intent.putExtra("SPOT_NUMBER", spotNumber);
+        intent.putExtra("FACILITY_NAME", facilityName);
+        intent.putExtra("SELECTED_FLOOR", selectedCategory); // Pass the selected floor
         startActivity(intent);
     }
+
 }
-
-

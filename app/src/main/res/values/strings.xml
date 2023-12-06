@@ -30,6 +30,10 @@
         <item>Floor 1</item>
         <item>Floor 2</item>
         <item>Floor 3</item>
-        <!-- Add more items as needed -->
+        <item>Floor 4</item>
+        <item>Floor 5</item>
+        <item>Floor 6</item>
+        <item>Floor 7</item>
+        <item>Floor 8</item>
     </string-array>
 </resources>

@@ -32,6 +32,7 @@
         android:layout_height="wrap_content"
         android:divider="?android:attr/dividerHorizontal"
         android:showDividers="beginning|middle|end"
+        android:background="@drawable/table_border"
         >
         <TableRow
             android:id="@+id/table_row_header"
@@ -99,7 +100,9 @@
             <TextView
                 android:id="@+id/west_garage_occupancy_rate"
                 android:text="82%"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:gravity="left"
+                />
         </TableRow>
 
         <TableRow
@@ -128,13 +131,15 @@
             <TextView
                 android:id="@+id/lot_d_occupancy_rate"
                 android:text="83%"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:gravity="left"/>
         </TableRow>
 
         <TableRow
             android:id="@+id/table_row_campus_center_500"
             android:clickable="true"
-            android:onClick="onLotClicked">
+            android:onClick="onLotClicked"
+            >
 
             <TextView
                 android:id="@+id/campus_center_text_view"
@@ -157,7 +162,8 @@
             <TextView
                 android:id="@+id/campus_center_occupancy_rate"
                 android:text="100%"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:gravity="left"/>
         </TableRow>
 
         <TableRow
@@ -186,7 +192,8 @@
             <TextView
                 android:id="@+id/bayside_occupancy_rate"
                 android:text="13%"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:gravity="left"/>
         </TableRow>
     </TableLayout>
             <LinearLayout
@@ -495,6 +502,14 @@
                                                 android:layout_height="10mm"
                                                 android:src="@drawable/available" />
                                         </LinearLayout>
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
             <Button
                 android:id="@+id/back_btn"
                 android:layout_width="wrap_content"
@@ -505,6 +520,3 @@
                 android:textAllCaps="false" />
         </LinearLayout>
 
-    </LinearLayout>
-
-</LinearLayout>
