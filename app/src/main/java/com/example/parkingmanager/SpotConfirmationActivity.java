@@ -53,7 +53,7 @@ public class SpotConfirmationActivity extends AppCompatActivity {
 
             // Display the facility name and spot number
             TextView titleTextView = findViewById(R.id.textView_title2);
-            titleTextView.setText("YOU'VE PARKED AT: " + facilityName);
+            titleTextView.setText("YOU'VE PARKED AT: \n\n" + facilityName);
 
             TextView spotNumberTextView = findViewById(R.id.textView_spot_num);
             spotNumberTextView.setText("#" + spotNumber);

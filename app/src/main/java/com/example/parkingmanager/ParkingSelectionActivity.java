@@ -132,15 +132,46 @@ public class ParkingSelectionActivity extends AppCompatActivity {
         spinner.setAdapter(adapter);
 
 
+        spinner.setSelection(0,false);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 selectedCategory = parentView.getItemAtPosition(position).toString();
                 selectedFacilityName = parentView.getItemAtPosition(position).toString();
 
-//                for (int i = 1; i <= 36; i++) {
-//
-//                }
+                for (int i = 0; i < spotImageViews.size(); i++) {
+                    int spotNumber = i + 1;
+                    spotImageViews.get(i).setOnClickListener(null);
+                    spotImageViews.get(i).setImageResource(0);
+                    long random = Math.round(Math.random());
+
+
+
+
+                    String imgName = String.valueOf(spotImageViews.get(i).getTag());
+                    Log.d("random", String.valueOf(random));
+
+                    if(random == 1 ) {
+                        spotImageViews.get(i).setImageResource(R.drawable.spot);
+
+
+                    }
+                    else if(random == 0){
+                        spotImageViews.get(i).setImageResource(R.drawable.table_border);
+                        spotImageViews.get(i).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+
+                                // Handle ImageView click
+                                navigateToSpotConfirmationActivity(String.valueOf(spotNumber), selectedFacilityName, selectedCategory);
+
+                            }
+                        });
+
+                    }
+
+                }
 
                 ///////////
 
@@ -218,7 +249,7 @@ public class ParkingSelectionActivity extends AppCompatActivity {
             Log.d("Parking", String.valueOf(resId));
             ImageView spotImageView = (ImageView) findViewById(resId);
             spotImageViews.add(spotImageView);
-            int int_random = new Random().nextInt(1);
+
 
 //            if(Math.round( Math.random() ) == 1 ) {
 //                spotImageView.setImageResource(R.drawable.spot);

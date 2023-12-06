@@ -42,7 +42,7 @@
             android:layout_marginStart="2dp"
             android:layout_marginTop="150px"
             android:layout_marginEnd="32dp"
-            android:text="Floor:"
+
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="34sp"
